@@ -110,21 +110,20 @@ export default {
                 .enter()
                 .append("circle")
                     .attr("cx", width - width_legend - 30)
-                    .attr("cy", function(d,i){ return 25 + i*25})
+                    .attr("cy", function(_,i){ return 25 + i*25})
                     .attr("r", 7)
                     .style("fill", function(d){ return colors(d[0])})
-
                 
             svg_container.selectAll("mylabels")
                 .data(sumsat)
                 .enter()
                 .append("text")
                     .attr("x", width - width_legend - 10)
-                    .attr("y", function(d,i){ return 25 + i*25})
+                    .attr("y", function(d,i){ return 25 + i*25 + 2})
                     .style("fill", function(d){ return colors(d[0])})
                     .text(function(d){ return d[0]})
                     .attr("text-anchor", "left")
-                    .style("alignment-baseline", "middle")
+                    .style("dominant-baseline", "middle")
         }
     }
 }
