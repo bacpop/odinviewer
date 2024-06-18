@@ -35,7 +35,7 @@
 import SingleViewer from './components/SingleViewer.vue'
 import MultipleViewer from './components/MultipleViewer.vue'
 import VueSlider from 'vue-3-slider-component'
-import * as models from '../public/models/BIOMD0000000012 .js'
+import * as models from '../public/models/BIOMD0000000012.js'
 import { PkgWrapper } from "@reside-ic/odinjs"
 import { ref } from 'vue'
 import Popper from "vue3-popper";
@@ -63,7 +63,7 @@ export default {
   setup() {
     let time = ref(20)
     let multiple = ref(false)
-    const mod = new PkgWrapper(models.BIOMD0000000012 , {}, "error")
+    const mod = new PkgWrapper(models.BIOMD0000000012, {}, "error")
     const times = [...Array(time.value).keys()]
     const results_all = mod.run(times, null, {})
     const results_names = results_all.names
@@ -105,7 +105,7 @@ export default {
   methods: {
     reload() {
       console.log(this.parameters)
-      const mod = new PkgWrapper(models.BIOMD0000000012 , this.parameters, "error")
+      const mod = new PkgWrapper(models.BIOMD0000000012, this.parameters, "error")
       const times = [...Array(this.time).keys()]
       const results_all = mod.run(times, null, {})
       this.results_names = results_all.names
@@ -116,7 +116,7 @@ export default {
     
     async extractParameters() {
       try {
-        const response = await fetch('./models/BIOMD0000000012 .js');
+        const response = await fetch('./models/BIOMD0000000012.js');
         if (response.ok) {
           let fileContent = await response.text();
           let parameters_split = fileContent.replaceAll("this.base.user.setUserScalar(user, ","$").split("$")
