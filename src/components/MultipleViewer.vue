@@ -48,7 +48,7 @@ export default {
                 }
             }
 
-            const margin = {top: 30, right: 10, bottom: 30, left: 50}
+            const margin = {top: 30, right: 50, bottom: 30, left: 50}
             const width = 300 - margin.left - margin.right
             const height = 300 - margin.top - margin.bottom
 

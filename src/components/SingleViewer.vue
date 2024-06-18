@@ -47,7 +47,7 @@ export default {
                 }
             }
 
-            const margin = {top: 20, right: 20, bottom: 50, left: 50}
+            const margin = {top: 20, right: 50, bottom: 50, left: 50}
             const width = window.innerWidth - margin.left - margin.right
             const height = 500 - margin.top - margin.bottom
 
@@ -110,7 +110,7 @@ export default {
                 .enter()
                 .append("circle")
                     .attr("cx", width - width_legend - 30)
-                    .attr("cy", function(_,i){ return 25 + i*25})
+                    .attr("cy", function(_,i){ return 17 + i*17})
                     .attr("r", 7)
                     .style("fill", function(d){ return colors(d[0])})
                 
@@ -119,7 +119,7 @@ export default {
                 .enter()
                 .append("text")
                     .attr("x", width - width_legend - 10)
-                    .attr("y", function(d,i){ return 25 + i*25 + 2})
+                    .attr("y", function(d,i){ return 17 + i*17 + 2})
                     .style("fill", function(d){ return colors(d[0])})
                     .text(function(d){ return d[0]})
                     .attr("text-anchor", "left")

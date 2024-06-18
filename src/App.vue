@@ -1,24 +1,32 @@
 <template>
-  <input type="checkbox" id="multiple" v-model="multiple"/>
-  <label for="multiple">Show each chart in its plot</label>
-  <VueSlider 
-    v-model="time" 
-    :min="5"
-    :max="2000"
-    :interval="1"
-    style="margin: 5px 20px;"
-    >
-  </VueSlider>
-  <Popper>
-    <button>Choose initial parameters</button>
-    <template #content>
-      <div v-for="(value, index) in Object.entries(this.parameters)" :key="index">
-        <label class="keys">{{ value[0] }}</label>
-        <input class="values" type="number" :value="value[1]" @change="event => this.parameters[value[0]] = +event.target.value"/>
-      </div>
-      <button @click="reload">Reload model with new parameters</button>
-    </template>
-  </Popper>
+  <h1>SBMLtoOdin Viewer</h1>
+  <div id="multiple_div">
+    <input type="checkbox" id="multiple" v-model="multiple"/>
+    <label for="multiple">Show each chart in its plot</label>
+  </div>  
+  <div id="time_slider">
+    <label for="time">Time: {{ time }}</label>
+    <VueSlider 
+      v-model="time" 
+      :min="5"
+      :max="2000"
+      :interval="1"
+      :tooltip="'false'"
+      >
+    </VueSlider>
+  </div>
+  <div id="initial_parameters">
+    <Popper>
+      <button>Choose initial parameters</button>
+      <template #content>
+        <div v-for="(value, index) in Object.entries(this.parameters)" :key="index">
+          <label class="keys">{{ value[0] }}</label>
+          <input class="values" type="number" :value="value[1]" @change="event => this.parameters[value[0]] = +event.target.value"/>
+        </div>
+        <button @click="reload">Reload model with new parameters</button>
+      </template>
+    </Popper>
+  </div>
   <SingleViewer v-if="!multiple" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
   <MultipleViewer v-else :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
 </template>
@@ -27,7 +35,7 @@
 import SingleViewer from './components/SingleViewer.vue'
 import MultipleViewer from './components/MultipleViewer.vue'
 import VueSlider from 'vue-3-slider-component'
-import * as models from '../public/models/testModel2.js'
+import * as models from '../public/models/BIOMD0000000012 .js'
 import { PkgWrapper } from "@reside-ic/odinjs"
 import { ref } from 'vue'
 import Popper from "vue3-popper";
@@ -55,7 +63,7 @@ export default {
   setup() {
     let time = ref(20)
     let multiple = ref(false)
-    const mod = new PkgWrapper(models.testModel2, {}, "error")
+    const mod = new PkgWrapper(models.BIOMD0000000012 , {}, "error")
     const times = [...Array(time.value).keys()]
     const results_all = mod.run(times, null, {})
     const results_names = results_all.names
@@ -91,14 +99,13 @@ export default {
       }
       this.update_single += 1
       this.update_multiple += 1
-      console.log(this.parameters)
     },
   },
 
   methods: {
     reload() {
       console.log(this.parameters)
-      const mod = new PkgWrapper(models.testModel2, this.parameters, "error")
+      const mod = new PkgWrapper(models.BIOMD0000000012 , this.parameters, "error")
       const times = [...Array(this.time).keys()]
       const results_all = mod.run(times, null, {})
       this.results_names = results_all.names
@@ -109,7 +116,7 @@ export default {
     
     async extractParameters() {
       try {
-        const response = await fetch('./models/testModel2.js');
+        const response = await fetch('./models/BIOMD0000000012 .js');
         if (response.ok) {
           let fileContent = await response.text();
           let parameters_split = fileContent.replaceAll("this.base.user.setUserScalar(user, ","$").split("$")
@@ -151,6 +158,18 @@ export default {
 .values {
   display: inline-block;
   width: 150px;
+}
+
+#time_slider {
+  margin: 10px 20px;
+}
+
+#multiple_div {
+  margin: 10px 20px;
+}
+
+#initial_parameters {
+  margin: 10px 20px;
 }
 </style>
 
