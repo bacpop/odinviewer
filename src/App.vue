@@ -11,7 +11,7 @@
       :min="5"
       :max="2000"
       :interval="1"
-      :tooltip="'false'"
+      :tooltip="'none'"
       >
     </VueSlider>
   </div>
@@ -19,11 +19,16 @@
     <Popper>
       <button>Choose initial parameters</button>
       <template #content>
-        <div v-for="(value, index) in Object.entries(this.parameters)" :key="index">
+        <div v-for="value in Object.entries(this.parameters)" :key="value[1]">
           <label class="keys">{{ value[0] }}</label>
           <input class="values" type="number" :value="value[1]" @change="event => this.parameters[value[0]] = +event.target.value"/>
         </div>
-        <button @click="reload">Reload model with new parameters</button>
+        <div class="parameters_button">
+          <button @click="reload">Reload model with new parameters</button>
+        </div>
+        <div class="parameters_button">
+          <button @click="Object.assign(this.parameters, this.initial_parameters); reload()">Reset parameters</button>
+        </div>
       </template>
     </Popper>
   </div>
@@ -51,8 +56,8 @@ export default {
 
   data() {
     return {
-      parameters: [],
-      parameters_values: []
+      parameters: {},
+      initial_parameters: {},
     }
   },
 
@@ -104,7 +109,6 @@ export default {
 
   methods: {
     reload() {
-      console.log(this.parameters)
       const mod = new PkgWrapper(models.BIOMD0000000012, this.parameters, "error")
       const times = [...Array(this.time).keys()]
       const results_all = mod.run(times, null, {})
@@ -126,6 +130,7 @@ export default {
             parameters[parameters_split[i].split(",")[0].replaceAll('"', '')] = +parameters_split[i].split(",")[2]
           }
           this.parameters = parameters
+          Object.assign(this.initial_parameters, this.parameters)
         } else {
           console.error('Failed to load file');
         }
@@ -168,8 +173,12 @@ export default {
   margin: 10px 20px;
 }
 
+.parameters_button {
+  margin: 3px 0;
+}
+
 #initial_parameters {
-  margin: 10px 20px;
+  margin: 0px 50px;
 }
 </style>
 
