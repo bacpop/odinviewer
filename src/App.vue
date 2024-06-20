@@ -67,9 +67,10 @@ export default {
 
   setup() {
     let time = ref(20)
+    let time_interval = 0.3
     let multiple = ref(false)
     const mod = new PkgWrapper(models.BIOMD0000000012, {}, "error")
-    const times = [...Array(time.value).keys()]
+    const times = range(0, time.value, time_interval)
     const results_all = mod.run(times, null, {})
     const results_names = results_all.names
     const results_y = results_all.y
@@ -79,6 +80,7 @@ export default {
 
     return { 
       time, 
+      time_interval,
       multiple, 
       mod, 
       times, 
@@ -92,15 +94,15 @@ export default {
   watch: {
     time: function(newTime, oldTime) {
       if (oldTime < newTime) {
-        this.times = [...Array(newTime).keys()]
-        let time_diff = [...Array(newTime - oldTime + 1).keys()]
-        const results_all = this.mod.run(time_diff, this.results_y[oldTime - 1], {})
+        this.times = range(0, newTime, this.time_interval)
+        let time_diff = range(0, newTime - oldTime + 1, this.time_interval)
+        const results_all = this.mod.run(time_diff, this.results_y[this.results_y.length - 1], {})
         this.results_y.pop()
         this.results_y = this.results_y.concat(results_all.y)
       }
       else {
-        this.times = [...Array(newTime).keys()]
-        this.results_y = this.results_y.slice(0, newTime)
+        this.times = range(0, newTime, this.time_interval)
+        this.results_y = this.results_y.slice(0, newTime/this.time_interval)
       }
       this.update_single += 1
       this.update_multiple += 1
@@ -110,7 +112,7 @@ export default {
   methods: {
     reload() {
       const mod = new PkgWrapper(models.BIOMD0000000012, this.parameters, "error")
-      const times = [...Array(this.time).keys()]
+      const times = range(0, this.time, this.time_interval)
       const results_all = mod.run(times, null, {})
       this.results_names = results_all.names
       this.results_y = results_all.y
@@ -139,8 +141,13 @@ export default {
       }
     }
   }
-
 }
+
+function range(start, end, step){
+  const len = Math.floor((end - start) / step)
+  return Array(len).fill().map((_, idx) => start + (idx * step))
+}
+
 </script>
 
 <style>
