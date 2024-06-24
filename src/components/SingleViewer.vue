@@ -48,7 +48,7 @@ export default {
             }
 
             const margin = {top: 20, right: 50, bottom: 50, left: 50}
-            const width = window.innerWidth - margin.left - margin.right
+            const width = 0.9*window.innerWidth - margin.left - margin.right
             const height = 500 - margin.top - margin.bottom
 
             const svg = d3.select("#ViewerContainer")

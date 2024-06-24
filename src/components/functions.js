@@ -15,3 +15,20 @@ export function getTextWidth(font_size, font_family, text = "G") {
     const width = context?.measureText(inputText).width; 
     return width;
 }
+
+window.$ = require('jquery');
+
+// This function is used to turn SBML into SBGN-ML
+export function convertSbmlToSbgnml(xml) { 
+    
+    var conversionApiUrl = "https://minerva-service.lcsb.uni.lu/minerva/api/convert/SBML:SBGN-ML";
+
+    return window.$.ajax({
+        type: 'post',
+        url: conversionApiUrl,
+        contentType: "application/xml",
+        data: xml,
+        dataType: "text",
+    });
+    
+}

@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbgn xmlns:ns2="http://sbgn.org/libsbgn/0.3"
+          xmlns:ns1="http://www.sbml.org/sbml/level3/version1/render/version1">
+   <map id="Phillips2013___physiologically_based_modeling_explaining_Mammalian_rest_activity_patterns"
+            language="process description">
+      <notes>
+         <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+               <title/>
+            </head>
+            <body>
+[-:-]	[Reaction Vm_deg]	Reaction doesn't have any products. Adding artifitial.
+[Reaction:Vm_deg]	Don't know how to handle SBOTerm SBO:0000179 for reaction
+[-:-]	[Reaction Vv_deg]	Reaction doesn't have any products. Adding artifitial.
+[Reaction:Vv_deg]	Don't know how to handle SBOTerm SBO:0000179 for reaction
+[-:-]	[Reaction Vm_Vv]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	[Reaction Vv_Vm]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	[Reaction Vm_H]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	[Reaction H_deg]	Reaction doesn't have any products. Adding artifitial.
+[Reaction:H_deg]	Don't know how to handle SBOTerm SBO:0000179 for reaction
+[-:-]	[Reaction X_syn]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	[Reaction Y_syn]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	[Reaction n_deg]	Reaction doesn't have any products. Adding artifitial.
+[Reaction:n_deg]	Don't know how to handle SBOTerm SBO:0000179 for reaction
+[-:-]	[Reaction n_syn]	Reaction doesn't have any reactant. Adding artifitial.
+[Reaction:n_syn]	Don't know how to handle SBOTerm SBO:0000393 for reaction
+[-:-]	[Reaction Y_X]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	[Reaction X_Y]	Reaction doesn't have any reactant. Adding artifitial.
+[-:-]	Handling of Events is not implemented for model
+[-:-]	InitialAssignment not implemented for model
+[-:-]	Rule not implemented for model</body>
+         </html>
+      </notes>
+      <extension>
+         <annotation>
+            <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                     xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                     xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                     xmlns:dc="http://purl.org/dc/elements/1.1/"
+                     xmlns:dcterms="http://purl.org/dc/terms/"
+                     xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+               <rdf:Description rdf:about="#Phillips2013___physiologically_based_modeling_explaining_Mammalian_rest_activity_patterns">
+                  <bqmodel:is>
+                     <rdf:Bag>
+                        <rdf:li rdf:resource="https://identifiers.org/biomodels.db:BIOMD0000001072"/>
+                     </rdf:Bag>
+                  </bqmodel:is>
+                  <bqbiol:isDescribedBy>
+                     <rdf:Bag>
+                        <rdf:li rdf:resource="https://identifiers.org/pubmed:24039566"/>
+                     </rdf:Bag>
+                  </bqbiol:isDescribedBy>
+                  <bqbiol:hasProperty>
+                     <rdf:Bag>
+                        <rdf:li rdf:resource="https://identifiers.org/GO:0042745"/>
+                     </rdf:Bag>
+                  </bqbiol:hasProperty>
+                  <bqmodel:is>
+                     <rdf:Bag>
+                        <rdf:li rdf:resource="https://identifiers.org/biomodels.db:MODEL2003080001"/>
+                     </rdf:Bag>
+                  </bqmodel:is>
+                  <bqbiol:hasProperty>
+                     <rdf:Bag>
+                        <rdf:li rdf:resource="https://identifiers.org/mamo:MAMO_0000046"/>
+                     </rdf:Bag>
+                  </bqbiol:hasProperty>
+                  <bqbiol:hasTaxon>
+                     <rdf:Bag>
+                        <rdf:li rdf:resource="https://identifiers.org/taxonomy:40674"/>
+                     </rdf:Bag>
+                  </bqbiol:hasTaxon>
+                  <dc:creator>
+                     <rdf:Bag>
+                        <rdf:li rdf:parseType="Resource">
+                           <vCard:N rdf:parseType="Resource">
+                              <vCard:Family>Bujtár</vCard:Family>
+                              <vCard:Given>Zsófia</vCard:Given>
+                           </vCard:N>
+                           <vCard:EMAIL>Zsofia.Bujtar@mdc-berlin.de</vCard:EMAIL>
+                           <vCard:ORG rdf:parseType="Resource">
+                              <vCard:Orgname>Max-Delbrück-Centrum für Molekulare Medizin in der Helmholtz-Gemeinschaft</vCard:Orgname>
+                           </vCard:ORG>
+                        </rdf:li>
+                     </rdf:Bag>
+                  </dc:creator>
+                  <dcterms:created rdf:parseType="Resource">
+                     <dcterms:W3CDTF>2023-01-02T12:34:17Z</dcterms:W3CDTF>
+                  </dcterms:created>
+                  <dcterms:modified rdf:parseType="Resource">
+                     <dcterms:W3CDTF>2023-01-02T12:34:17Z</dcterms:W3CDTF>
+                  </dcterms:modified>
+               </rdf:Description>
+            </rdf:RDF>
+         </annotation>
+         <ns1:renderInformation>
+            <ns1:listOfStyles>
+               <ns1:style ns1:idList="V_m">
+                  <ns1:g ns1:fill="#ccff66" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="X">
+                  <ns1:g ns1:fill="#ccff66" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_6">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_0">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_10">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_5">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_7">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="H">
+                  <ns1:g ns1:fill="#ccff66" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="n">
+                  <ns1:g ns1:fill="#ccff66" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_2">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="Y">
+                  <ns1:g ns1:fill="#ccff66" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_4">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_3">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_11">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_1">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_8">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="V_v">
+                  <ns1:g ns1:fill="#ccff66" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="individual">
+                  <ns1:g ns1:fill="#cccc00" ns1:stroke="#cccc00" ns1:stroke-width="12.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="sbml_artifitial_9">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_11__Vm_H">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc0">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc1">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc2">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_2__X_syn">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc3">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc4">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc5">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_3__H_deg">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc6">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc7">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_6__Y_X">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc8">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc9">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc10">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_7__Vv_Vm">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc11">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc12">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc13">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc14">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_5__n_syn">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc15">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc16">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_4__Vm_deg">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc17">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc18">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_9__Vm_Vv">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc19">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc20">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc21">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc22">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc23">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_0__X_Y">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc24">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc25">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc26">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_8__Y_syn">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc27">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc28">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc29">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_1__Vv_deg">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc30">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc31">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="reaction_glyph_10__n_deg">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc32">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+               <ns1:style ns1:idList="arc33">
+                  <ns1:g ns1:fill="#ffffff" ns1:stroke="#000000" ns1:stroke-width="1.0"/>
+               </ns1:style>
+            </ns1:listOfStyles>
+         </ns1:renderInformation>
+      </extension>
+      <bbox h="1900.0" w="1900.0" x="0.0" y="0.0"/>
+      <glyph class="simple chemical" compartmentRef="individual" id="V_m">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#V_m">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="V_m(mean_cell_body_potential_MA)">
+            <bbox h="30.0" w="90.0" x="641.7283" y="1562.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="641.7283" y="1562.0"/>
+      </glyph>
+      <glyph class="simple chemical" compartmentRef="individual" id="X">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#X">
+                     <bqbiol:hasProperty>
+                        <rdf:Bag>
+                           <rdf:li rdf:resource="https://identifiers.org/ncit:C74537"/>
+                        </rdf:Bag>
+                     </bqbiol:hasProperty>
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="x(SCN_activity)">
+            <bbox h="30.0" w="90.0" x="905.0" y="1714.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="905.0" y="1714.0"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_6">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_6">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="588.3333" y="460.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="588.3333" y="460.0"/>
+      </glyph>
+      <glyph class="source and sink" id="sbml_artifitial_0">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_0">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial sink">
+            <bbox h="30.0" w="90.0" x="630.7586" y="618.3333"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="630.7586" y="618.3333"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_10">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_10">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="1063.3334" y="185.75862"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1063.3334" y="185.75862"/>
+      </glyph>
+      <glyph class="source and sink" id="sbml_artifitial_5">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_5">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial sink">
+            <bbox h="30.0" w="90.0" x="905.0" y="776.6667"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="905.0" y="776.6667"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_7">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_7">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="1179.2413" y="618.3333"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1179.2413" y="618.3333"/>
+      </glyph>
+      <glyph class="simple chemical" compartmentRef="individual" id="H">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#H">
+                     <bqbiol:isVersionOf>
+                        <rdf:Bag>
+                           <rdf:li rdf:resource="https://identifiers.org/GO:0160060"/>
+                        </rdf:Bag>
+                     </bqbiol:isVersionOf>
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="H(sleep_homeostatic_drive)">
+            <bbox h="30.0" w="90.0" x="1168.2717" y="1258.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1168.2717" y="1258.0"/>
+      </glyph>
+      <glyph class="simple chemical" compartmentRef="individual" id="n">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#n">
+                     <bqbiol:hasProperty>
+                        <rdf:Bag>
+                           <rdf:li rdf:resource="https://identifiers.org/ncit:C32954"/>
+                        </rdf:Bag>
+                     </bqbiol:hasProperty>
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="n(fraction_of_photoreceptors_that_are_activated)">
+            <bbox h="30.0" w="90.0" x="905.0" y="1106.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="905.0" y="1106.0"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_2">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_2">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="905.0" y="143.33333"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="905.0" y="143.33333"/>
+      </glyph>
+      <glyph class="simple chemical" compartmentRef="individual" id="Y">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#Y">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="y(complement_of_x)">
+            <bbox h="30.0" w="90.0" x="1168.2717" y="1562.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1168.2717" y="1562.0"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_4">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_4">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="1179.2413" y="301.66666"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1179.2413" y="301.66666"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_3">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_3">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="1063.3334" y="734.2414"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1063.3334" y="734.2414"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_11">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_11">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="630.7586" y="301.66666"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="630.7586" y="301.66666"/>
+      </glyph>
+      <glyph class="source and sink" id="sbml_artifitial_1">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_1">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial sink">
+            <bbox h="30.0" w="90.0" x="746.6667" y="185.75862"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="746.6667" y="185.75862"/>
+      </glyph>
+      <glyph class="source and sink" id="sbml_artifitial_8">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_8">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial sink">
+            <bbox h="30.0" w="90.0" x="746.6667" y="734.2414"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="746.6667" y="734.2414"/>
+      </glyph>
+      <glyph class="simple chemical" compartmentRef="individual" id="V_v">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#V_v">
+                     <bqbiol:hasProperty>
+                        <rdf:Bag>
+                           <rdf:li rdf:resource="https://identifiers.org/UBERON:8440014"/>
+                        </rdf:Bag>
+                     </bqbiol:hasProperty>
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="V_v(mean_cell_body_potential_VLPO)">
+            <bbox h="30.0" w="90.0" x="641.7283" y="1258.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="641.7283" y="1258.0"/>
+      </glyph>
+      <glyph class="compartment" id="individual">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#individual">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Default">
+            <bbox h="872.0" w="1822.0" x="39.0" y="989.0"/>
+         </label>
+         <bbox h="912.0" w="1862.0" x="19.0" y="969.0"/>
+      </glyph>
+      <glyph class="unspecified entity" id="sbml_artifitial_9">
+         <extension>
+            <annotation>
+               <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                        xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
+                        xmlns:bqmodel="http://biomodels.net/model-qualifiers/"
+                        xmlns:dc="http://purl.org/dc/elements/1.1/"
+                        xmlns:dcterms="http://purl.org/dc/terms/"
+                        xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <rdf:Description rdf:about="#sbml_artifitial_9">
+                     <dcterms:modified rdf:parseType="Resource"/>
+                  </rdf:Description>
+               </rdf:RDF>
+            </annotation>
+         </extension>
+         <label text="Artifitial source">
+            <bbox h="30.0" w="90.0" x="1221.6666" y="460.0"/>
+         </label>
+         <bbox h="30.0" w="90.0" x="1221.6666" y="460.0"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_11__Vm_H" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="1213.7566" y="789.8333"/>
+         <port id="reaction_glyph_11__Vm_H.1" x="1218.7566" y="784.8333"/>
+         <port id="reaction_glyph_11__Vm_H.2" x="1218.7566" y="804.8333"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_2__X_syn" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="786.6667" y="1097.0"/>
+         <port id="reaction_glyph_2__X_syn.1" x="791.6667" y="1092.0"/>
+         <port id="reaction_glyph_2__X_syn.2" x="791.6667" y="1112.0"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_3__H_deg" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="1076.6359" y="1027.3334"/>
+         <port id="reaction_glyph_3__H_deg.1" x="1081.6359" y="1042.3334"/>
+         <port id="reaction_glyph_3__H_deg.2" x="1081.6359" y="1022.3333"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_6__Y_X" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="1024.1666" y="959.87933"/>
+         <port id="reaction_glyph_6__Y_X.1" x="1029.1666" y="954.87933"/>
+         <port id="reaction_glyph_6__Y_X.2" x="1029.1666" y="974.87933"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_7__Vv_Vm" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="892.5308" y="1158.1207"/>
+         <port id="reaction_glyph_7__Vv_Vm.1" x="897.5308" y="1153.1207"/>
+         <port id="reaction_glyph_7__Vv_Vm.2" x="897.5308" y="1173.1207"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_5__n_syn" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="1103.3334" y="793.0"/>
+         <port id="reaction_glyph_5__n_syn.1" x="1108.3334" y="788.0"/>
+         <port id="reaction_glyph_5__n_syn.2" x="1108.3334" y="808.0"/>
+      </glyph>
+      <glyph class="process"
+                 id="reaction_glyph_4__Vm_deg"
+                 orientation="vertical">
+         <bbox h="10.0" w="10.0" x="676.24347" y="1100.1666"/>
+         <port id="reaction_glyph_4__Vm_deg.1" x="681.24347" y="1115.1666"/>
+         <port id="reaction_glyph_4__Vm_deg.2" x="681.24347" y="1095.1666"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_9__Vm_Vv" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="813.36414" y="710.6667"/>
+         <port id="reaction_glyph_9__Vm_Vv.1" x="818.36414" y="705.6667"/>
+         <port id="reaction_glyph_9__Vm_Vv.2" x="818.36414" y="725.6667"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_0__X_Y" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="939.5152" y="941.8333"/>
+         <port id="reaction_glyph_0__X_Y.1" x="944.5152" y="936.8333"/>
+         <port id="reaction_glyph_0__X_Y.2" x="944.5152" y="956.8333"/>
+      </glyph>
+      <glyph class="process" id="reaction_glyph_8__Y_syn" orientation="vertical">
+         <bbox h="10.0" w="10.0" x="1213.7566" y="1100.1666"/>
+         <port id="reaction_glyph_8__Y_syn.1" x="1218.7566" y="1095.1666"/>
+         <port id="reaction_glyph_8__Y_syn.2" x="1218.7566" y="1115.1666"/>
+      </glyph>
+      <glyph class="process"
+                 id="reaction_glyph_1__Vv_deg"
+                 orientation="vertical">
+         <bbox h="10.0" w="10.0" x="734.19745" y="731.87933"/>
+         <port id="reaction_glyph_1__Vv_deg.1" x="739.19745" y="746.87933"/>
+         <port id="reaction_glyph_1__Vv_deg.2" x="739.19745" y="726.87933"/>
+      </glyph>
+      <glyph class="process"
+                 id="reaction_glyph_10__n_deg"
+                 orientation="vertical">
+         <bbox h="10.0" w="10.0" x="865.8333" y="930.12067"/>
+         <port id="reaction_glyph_10__n_deg.1" x="870.8333" y="945.12067"/>
+         <port id="reaction_glyph_10__n_deg.2" x="870.8333" y="925.12067"/>
+      </glyph>
+      <arc class="production"
+               id="arc0"
+               source="reaction_glyph_11__Vm_H.2"
+               target="H">
+         <start x="1218.7566" y="804.8333"/>
+         <end x="1213.4437" y="1258.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc1"
+               source="sbml_artifitial_4"
+               target="reaction_glyph_11__Vm_H.1">
+         <start x="1224.0693" y="331.66666"/>
+         <end x="1218.7566" y="784.8333"/>
+      </arc>
+      <arc class="modulation"
+               id="arc2"
+               source="V_m"
+               target="reaction_glyph_11__Vm_H">
+         <start x="696.9313" y="1562.0"/>
+         <end x="1218.7566" y="794.8333"/>
+      </arc>
+      <arc class="production"
+               id="arc3"
+               source="reaction_glyph_2__X_syn.2"
+               target="X">
+         <start x="791.6667" y="1112.0"/>
+         <end x="946.2121" y="1714.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc4"
+               source="sbml_artifitial_6"
+               target="reaction_glyph_2__X_syn.1">
+         <start x="637.1212" y="490.0"/>
+         <end x="791.6667" y="1092.0"/>
+      </arc>
+      <arc class="modulation"
+               id="arc5"
+               source="X"
+               target="reaction_glyph_2__X_syn">
+         <start x="946.2121" y="1714.0"/>
+         <end x="791.6667" y="1102.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc6"
+               source="H"
+               target="reaction_glyph_3__H_deg.1">
+         <start x="1205.0673" y="1258.0"/>
+         <end x="1081.6359" y="1042.3334"/>
+      </arc>
+      <arc class="production"
+               id="arc7"
+               source="reaction_glyph_3__H_deg.2"
+               target="sbml_artifitial_5">
+         <start x="1081.6359" y="1022.3333"/>
+         <end x="958.20447" y="806.6667"/>
+      </arc>
+      <arc class="production"
+               id="arc8"
+               source="reaction_glyph_6__Y_X.2"
+               target="X">
+         <start x="1029.1666" y="974.87933"/>
+         <end x="951.5541" y="1714.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc9"
+               source="sbml_artifitial_10"
+               target="reaction_glyph_6__Y_X.1">
+         <start x="1106.7793" y="215.75862"/>
+         <end x="1029.1666" y="954.87933"/>
+      </arc>
+      <arc class="modulation"
+               id="arc10"
+               source="Y"
+               target="reaction_glyph_6__Y_X">
+         <start x="1208.7603" y="1562.0"/>
+         <end x="1029.1666" y="964.87933"/>
+      </arc>
+      <arc class="production"
+               id="arc11"
+               source="reaction_glyph_7__Vv_Vm.2"
+               target="V_m">
+         <start x="897.5308" y="1173.1207"/>
+         <end x="694.3683" y="1562.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc12"
+               source="sbml_artifitial_3"
+               target="reaction_glyph_7__Vv_Vm.1">
+         <start x="1100.6934" y="764.2414"/>
+         <end x="897.5308" y="1153.1207"/>
+      </arc>
+      <arc class="modulation"
+               id="arc13"
+               source="X"
+               target="reaction_glyph_7__Vv_Vm">
+         <start x="948.6092" y="1714.0"/>
+         <end x="897.5308" y="1163.1207"/>
+      </arc>
+      <arc class="modulation"
+               id="arc14"
+               source="V_v"
+               target="reaction_glyph_7__Vv_Vm">
+         <start x="715.5057" y="1258.0"/>
+         <end x="897.5308" y="1163.1207"/>
+      </arc>
+      <arc class="production"
+               id="arc15"
+               source="reaction_glyph_5__n_syn.2"
+               target="n">
+         <start x="1108.3334" y="808.0"/>
+         <end x="957.35297" y="1106.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc16"
+               source="sbml_artifitial_9"
+               target="reaction_glyph_5__n_syn.1">
+         <start x="1259.3137" y="490.0"/>
+         <end x="1108.3334" y="788.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc17"
+               source="V_m"
+               target="reaction_glyph_4__Vm_deg.1">
+         <start x="686.5539" y="1562.0"/>
+         <end x="681.24347" y="1115.1666"/>
+      </arc>
+      <arc class="production"
+               id="arc18"
+               source="reaction_glyph_4__Vm_deg.2"
+               target="sbml_artifitial_0">
+         <start x="681.24347" y="1095.1666"/>
+         <end x="675.933" y="648.3333"/>
+      </arc>
+      <arc class="production"
+               id="arc19"
+               source="reaction_glyph_9__Vm_Vv.2"
+               target="V_v">
+         <start x="818.36414" y="725.6667"/>
+         <end x="690.2711" y="1258.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc20"
+               source="sbml_artifitial_2"
+               target="reaction_glyph_9__Vm_Vv.1">
+         <start x="946.45715" y="173.33333"/>
+         <end x="818.36414" y="705.6667"/>
+      </arc>
+      <arc class="modulation"
+               id="arc21"
+               source="V_m"
+               target="reaction_glyph_9__Vm_Vv">
+         <start x="689.0207" y="1562.0"/>
+         <end x="818.36414" y="715.6667"/>
+      </arc>
+      <arc class="modulation"
+               id="arc22"
+               source="H"
+               target="reaction_glyph_9__Vm_Vv">
+         <start x="1202.6432" y="1258.0"/>
+         <end x="818.36414" y="715.6667"/>
+      </arc>
+      <arc class="modulation"
+               id="arc23"
+               source="X"
+               target="reaction_glyph_9__Vm_Vv">
+         <start x="948.05145" y="1714.0"/>
+         <end x="818.36414" y="715.6667"/>
+      </arc>
+      <arc class="production"
+               id="arc24"
+               source="reaction_glyph_0__X_Y.2"
+               target="Y">
+         <start x="944.5152" y="956.8333"/>
+         <end x="1206.8744" y="1562.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc25"
+               source="sbml_artifitial_11"
+               target="reaction_glyph_0__X_Y.1">
+         <start x="682.1559" y="331.66666"/>
+         <end x="944.5152" y="936.8333"/>
+      </arc>
+      <arc class="modulation"
+               id="arc26"
+               source="X"
+               target="reaction_glyph_0__X_Y">
+         <start x="949.89484" y="1714.0"/>
+         <end x="944.5152" y="946.8333"/>
+      </arc>
+      <arc class="production"
+               id="arc27"
+               source="reaction_glyph_8__Y_syn.2"
+               target="Y">
+         <start x="1218.7566" y="1115.1666"/>
+         <end x="1213.446" y="1562.0"/>
+      </arc>
+      <arc class="consumption"
+               id="arc28"
+               source="sbml_artifitial_7"
+               target="reaction_glyph_8__Y_syn.1">
+         <start x="1224.067" y="648.3333"/>
+         <end x="1218.7566" y="1095.1666"/>
+      </arc>
+      <arc class="modulation"
+               id="arc29"
+               source="Y"
+               target="reaction_glyph_8__Y_syn">
+         <start x="1213.446" y="1562.0"/>
+         <end x="1218.7566" y="1105.1666"/>
+      </arc>
+      <arc class="consumption"
+               id="arc30"
+               source="V_v"
+               target="reaction_glyph_1__Vv_deg.1">
+         <start x="688.1963" y="1258.0"/>
+         <end x="739.19745" y="746.87933"/>
+      </arc>
+      <arc class="production"
+               id="arc31"
+               source="reaction_glyph_1__Vv_deg.2"
+               target="sbml_artifitial_1">
+         <start x="739.19745" y="726.87933"/>
+         <end x="790.19867" y="215.75862"/>
+      </arc>
+      <arc class="consumption"
+               id="arc32"
+               source="n"
+               target="reaction_glyph_10__n_deg.1">
+         <start x="943.61145" y="1106.0"/>
+         <end x="870.8333" y="945.12067"/>
+      </arc>
+      <arc class="production"
+               id="arc33"
+               source="reaction_glyph_10__n_deg.2"
+               target="sbml_artifitial_8">
+         <start x="870.8333" y="925.12067"/>
+         <end x="798.05524" y="764.2414"/>
+      </arc>
+   </map>
+</sbgn>

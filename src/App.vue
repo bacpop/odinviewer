@@ -34,11 +34,13 @@
   </div>
   <SingleViewer v-if="!multiple" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
   <MultipleViewer v-else :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
+  <Graph/>
 </template>
 
 <script>
 import SingleViewer from './components/SingleViewer.vue'
 import MultipleViewer from './components/MultipleViewer.vue'
+import Graph from './components/GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import * as models from '../public/models/BIOMD0000000012.js'
 import { PkgWrapper } from "@reside-ic/odinjs"
@@ -50,6 +52,7 @@ export default {
   components: {
     SingleViewer,
     MultipleViewer,
+    Graph,
     VueSlider,
     Popper
   },
