@@ -15,7 +15,6 @@
     "cytoscape-sbgn-stylesheet": "^4.0.2",
     "d3": "^7.9.0",
     "d3-scale-chromatic": "^3.1.0",
-    "fs": "^0.0.1-security",
     "jquery": "^3.7.1",
     "sbgnml-to-cytoscape": "^4.0.4",
     "vue": "^3.2.13",

@@ -16,19 +16,45 @@ export function getTextWidth(font_size, font_family, text = "G") {
     return width;
 }
 
-window.$ = require('jquery');
-
 // This function is used to turn SBML into SBGN-ML
-export function convertSbmlToSbgnml(xml) { 
-    
-    var conversionApiUrl = "https://minerva-service.lcsb.uni.lu/minerva/api/convert/SBML:SBGN-ML";
-
-    return window.$.ajax({
-        type: 'post',
-        url: conversionApiUrl,
-        contentType: "application/xml",
-        data: xml,
-        dataType: "text",
-    });
-    
+export async function convertSbmlToSbgnml(xml) { 
+  
+    const layoutOptions = {
+      name: "fcose",
+      randomize: true,
+      padding: 30,
+      nodeDimensionsIncludeLabels: true,
+      // ... other layout options
+    };
+    const imageOptions = {
+      format: "png",
+      background: "transparent",
+      width: 1280,
+      height: 720,
+      color: "bluescale",
+    };
+  
+    const settings = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'text/plain'
+      },
+      body: xml + JSON.stringify({layoutOptions, imageOptions}) // Concatenate strings
+    };
+  
+    try {
+      const response = await fetch("http://syblars.cs.bilkent.edu.tr/sbml", settings);
+      const result = await response.json();
+  
+      if (response.ok) {
+        const layoutInfo = result["layout"]; 
+        return layoutInfo;
+      } else {
+        console.error("Error fetching SBGN:", result); 
+      }
+  
+    } catch (error) {
+      console.error("Network error:", error);
+    }
 }
