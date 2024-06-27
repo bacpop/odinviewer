@@ -48,7 +48,7 @@ export async function convertSbmlToSbgnml(xml) {
       const result = await response.json();
   
       if (response.ok) {
-        const layoutInfo = result["layout"]; 
+        const layoutInfo = result["image"]; 
         return layoutInfo;
       } else {
         console.error("Error fetching SBGN:", result); 

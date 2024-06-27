@@ -1,8 +1,10 @@
 <template>
   <h1>SBMLtoOdin Viewer</h1>
-  <div id="multiple_div">
-    <input type="checkbox" id="multiple" v-model="multiple"/>
-    <label for="multiple">Show each chart in its plot</label>
+  <div id="checkboxes">
+    <input v-if="!graph" type="checkbox" id="multiple" v-model="multiple"/>
+    <label v-if="!graph" for="multiple">Show each chart in its plot</label>
+    <input type="checkbox" id="graph" v-model="graph"/>
+    <label for="single">Show a graph of the model</label>
   </div>  
   <div id="time_slider">
     <label for="time">Time: {{ time }}</label>
@@ -15,7 +17,7 @@
       >
     </VueSlider>
   </div>
-  <div id="initial_parameters">
+  <div v-if="!graph" id="initial_parameters">
     <Popper>
       <button>Choose initial parameters</button>
       <template #content>
@@ -32,9 +34,9 @@
       </template>
     </Popper>
   </div>
-  <SingleViewer v-if="!multiple" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
-  <MultipleViewer v-else :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
-  <Graph/>
+  <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
+  <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
+  <Graph v-else :model_reference="'LawModel'"/>
 </template>
 
 <script>
@@ -42,7 +44,7 @@ import SingleViewer from './components/SingleViewer.vue'
 import MultipleViewer from './components/MultipleViewer.vue'
 import Graph from './components/GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
-import * as models from '../public/models/BIOMD0000000012.js'
+import * as models from '../public/models/LawModel.js'
 import { PkgWrapper } from "@reside-ic/odinjs"
 import { ref } from 'vue'
 import Popper from "vue3-popper";
@@ -72,7 +74,8 @@ export default {
     let time = ref(20)
     let time_interval = 0.3
     let multiple = ref(false)
-    const mod = new PkgWrapper(models.BIOMD0000000012, {}, "error")
+    let graph = ref(false)
+    const mod = new PkgWrapper(models.LawModel, {}, "error")
     const times = range(0, time.value, time_interval)
     const results_all = mod.run(times, null, {})
     const results_names = results_all.names
@@ -85,6 +88,7 @@ export default {
       time, 
       time_interval,
       multiple, 
+      graph,
       mod, 
       times, 
       results_names, 
@@ -97,15 +101,17 @@ export default {
   watch: {
     time: function(newTime, oldTime) {
       if (oldTime < newTime) {
-        this.times = range(0, newTime, this.time_interval)
-        let time_diff = range(0, newTime - oldTime + 1, this.time_interval)
+        let time_diff = range(this.times[this.times.length - 1], newTime, this.time_interval)
         const results_all = this.mod.run(time_diff, this.results_y[this.results_y.length - 1], {})
-        this.results_y.pop()
-        this.results_y = this.results_y.concat(results_all.y)
+        let new_results = results_all.y
+        new_results.shift()
+        time_diff.shift()
+        this.results_y = this.results_y.concat(new_results)
+        this.times = this.times.concat(time_diff)
       }
       else {
         this.times = range(0, newTime, this.time_interval)
-        this.results_y = this.results_y.slice(0, newTime/this.time_interval)
+        this.results_y = this.results_y.slice(0, newTime/this.time_interval + 1)
       }
       this.update_single += 1
       this.update_multiple += 1
@@ -114,7 +120,8 @@ export default {
 
   methods: {
     reload() {
-      const mod = new PkgWrapper(models.BIOMD0000000012, this.parameters, "error")
+      const mod = new PkgWrapper(models.LawModel, this.parameters, "error")
+      this.mod = mod
       const times = range(0, this.time, this.time_interval)
       const results_all = mod.run(times, null, {})
       this.results_names = results_all.names
@@ -125,7 +132,7 @@ export default {
     
     async extractParameters() {
       try {
-        const response = await fetch('./models/BIOMD0000000012.js');
+        const response = await fetch('./models/LawModel.js');
         if (response.ok) {
           let fileContent = await response.text();
           let parameters_split = fileContent.replaceAll("this.base.user.setUserScalar(user, ","$").split("$")
@@ -147,7 +154,7 @@ export default {
 }
 
 function range(start, end, step){
-  const len = Math.floor((end - start) / step)
+  const len = Math.floor((end - start) / step) + 1
   return Array(len).fill().map((_, idx) => start + (idx * step))
 }
 
@@ -166,7 +173,7 @@ function range(start, end, step){
 
 .keys {
   display: inline-block;
-  width: 100px;
+  width: 150px;
   margin-bottom: 5px;
 }
 
@@ -179,7 +186,7 @@ function range(start, end, step){
   margin: 10px 20px;
 }
 
-#multiple_div {
+#checkboxes {
   margin: 10px 20px;
 }
 
@@ -189,6 +196,10 @@ function range(start, end, step){
 
 #initial_parameters {
   margin: 0px 50px;
+}
+
+#graph {
+  margin-left: 20px;
 }
 </style>
 
