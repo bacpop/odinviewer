@@ -31,7 +31,6 @@ export default {
   },
 
   mounted() {
-    console.log(this.model_reference);
     fetch(`./models/${this.model_reference}.xml`).then( fileString => fileString.text())
         .then( text => {
             convertSbmlToSbgnml(text).then( img => {

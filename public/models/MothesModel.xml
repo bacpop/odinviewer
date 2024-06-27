@@ -1,0 +1,361 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model areaUnits="area" id="__main" lengthUnits="length" metaid="__main" name="Mothes2020_NFkB_A20_signaling" substanceUnits="substance" timeUnits="time" volumeUnits="volume">
+    <notes>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>The Mothes2020_NFkB_A20_signaling model is based on our previous model published in Murakawa et al., Nat Commun, 2015 (doi: 10.1038/ncomms8367). In the Mothes2020_NFkB_A20_signaling model, we removed the modulating impact of the component RC3H1 (RNA-binding protein ROQUIN) which can alter the degradation rates of A20_mRNA and IkBa_mRNA. The Mothes2020_NFkB_A20_signaling model therefore represents the wild type condition of the Murakawa model and shows identical dynamics of the included components A20, A20_mRNA, IkBa, IkBa_mRNA, NFkB, NFkB_IkBa and IKK_active.</p>
+  </body>
+    </notes>
+    <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+        <rdf:Description rdf:about="#__main">
+          <bqbiol:hasProperty>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/mamo/MAMO_0000046"/>
+	</rdf:Bag>
+	</bqbiol:hasProperty>
+	
+	<bqmodel:isDescribedBy>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/pubmed:32848849"/>
+	</rdf:Bag>
+	</bqmodel:isDescribedBy>
+	</rdf:Description>
+	
+	
+	
+	</rdf:RDF>
+	</annotation>
+      <listOfUnitDefinitions>
+      <unitDefinition id="minute">
+        <listOfUnits>
+          <unit exponent="1" kind="second" multiplier="6" scale="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time">
+        <listOfUnits>
+          <unit exponent="1" kind="second" multiplier="60" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="_1_inv_item_minute">
+        <listOfUnits>
+          <unit exponent="-1" kind="item" multiplier="1" scale="0"/>
+          <unit exponent="-1" kind="second" multiplier="6" scale="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="_1_inv_minute">
+        <listOfUnits>
+          <unit exponent="-1" kind="second" multiplier="6" scale="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume">
+        <listOfUnits>
+          <unit exponent="1" kind="dimensionless" multiplier="1" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance">
+        <listOfUnits>
+          <unit exponent="1" kind="item" multiplier="1" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area">
+        <listOfUnits>
+          <unit exponent="1" kind="dimensionless" multiplier="1" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="length">
+        <listOfUnits>
+          <unit exponent="1" kind="dimensionless" multiplier="1" scale="0"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment constant="true" id="default_compartment" sboTerm="SBO:0000410" size="1" spatialDimensions="3"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="A20_mRNA" initialAmount="2.60440824041652"/>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="NFkB" initialAmount="0.00790517191852885"/>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="A20" initialAmount="0.302814090244101"/>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="IkBa" initialAmount="0.734346087424264"/>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="IkBa_mRNA" initialAmount="0.0324128948218359"/>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="NFkB_IkBa" initialAmount="1.43748041608147"/>
+      <species boundaryCondition="false" compartment="default_compartment" constant="false" hasOnlySubstanceUnits="false" id="IKK_active" initialAmount="0.0174486549874488"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter constant="true" id="k10" units="_1_inv_minute" value="0.0987513376"/>
+      <parameter constant="true" id="k6" units="_1_inv_item_minute" value="0.0002997404"/>
+      <parameter constant="true" id="k8" units="_1_inv_minute" value="0.0999074296"/>
+      <parameter constant="true" id="k3" units="_1_inv_minute" value="0.8592722113"/>
+      <parameter constant="true" id="k9" units="_1_inv_minute" value="0.1295180588"/>
+      <parameter constant="true" id="k4" units="_1_inv_minute" value="0.005501404"/>
+      <parameter constant="true" id="k1" units="_1_inv_item_minute" value="9727.7089680716"/>
+      <parameter constant="true" id="k2" units="_1_inv_minute" value="39.2843453963"/>
+      <parameter constant="true" id="k11" units="_1_inv_minute" value="0.0015859262"/>
+      <parameter constant="true" id="k7" units="_1_inv_item_minute" value="0.0003867911"/>
+      <parameter constant="true" id="k5" units="_1_inv_item_minute" value="0.0063041259"/>
+      <parameter constant="true" id="k14" units="item" value="0.0011844016"/>
+      <parameter constant="true" id="k15" units="_1_inv_minute" value="0.223288108"/>
+      <parameter constant="true" id="stimulus" units="dimensionless" value="1"/>
+      <parameter constant="true" id="k13" units="_1_inv_minute" value="12.657051563"/>
+      <parameter constant="true" id="k12" units="item" value="1.445385588"/>
+      <parameter constant="false" id="IkBa_tot" units="item" value="2.17182650350574"/>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="NFkB_IkBa">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <ci> k12 </ci>
+        </math>
+            </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="IkBa_tot">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
+          <apply>
+            <plus/>
+            <ci> NFkB_IkBa </ci>
+            <ci> IkBa </ci>
+          </apply>
+        </math>
+            </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="J1" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="A20_mRNA" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="NFkB"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k10 </ci>
+                <ci> NFkB </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k6 </ci>
+                <ci> A20_mRNA </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="J2" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="A20" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="A20_mRNA"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k8 </ci>
+                <ci> A20_mRNA </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k3 </ci>
+                <ci> A20 </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="J3" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="IkBa" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="NFkB"/>
+          <modifierSpeciesReference species="IkBa_mRNA"/>
+          <modifierSpeciesReference species="NFkB_IkBa"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> k9 </ci>
+                    <ci> IkBa_mRNA </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> k4 </ci>
+                    <ci> IkBa </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> IkBa </ci>
+                  <ci> NFkB </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> NFkB_IkBa </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="J4" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="IkBa_mRNA" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="NFkB"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> k11 </ci>
+                <ci> NFkB </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k7 </ci>
+                <ci> IkBa_mRNA </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="J5" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="NFkB_IkBa" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="NFkB"/>
+          <modifierSpeciesReference species="IkBa"/>
+          <modifierSpeciesReference species="IKK_active"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <minus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> IkBa </ci>
+                  <ci> NFkB </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k2 </ci>
+                  <ci> NFkB_IkBa </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k5 </ci>
+                <ci> NFkB_IkBa </ci>
+                <ci> IKK_active </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="J6" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="NFkB" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="IkBa"/>
+          <modifierSpeciesReference species="NFkB_IkBa"/>
+          <modifierSpeciesReference species="IKK_active"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <apply>
+                  <minus/>
+                  <ci> k1 </ci>
+                </apply>
+                <ci> IkBa </ci>
+                <ci> NFkB </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k2 </ci>
+                <ci> NFkB_IkBa </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> k5 </ci>
+                <ci> NFkB_IkBa </ci>
+                <ci> IKK_active </ci>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+      <reaction id="J7" reversible="true">
+        <listOfProducts>
+          <speciesReference constant="true" species="IKK_active" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="A20"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <ci> k14 </ci>
+                  <apply>
+                    <plus/>
+                    <ci> k14 </ci>
+                    <ci> A20 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k15 </ci>
+                  <ci> IKK_active </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> stimulus </ci>
+                <ci> k13 </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <minus/>
+                    <ci> A20 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+                </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -36,7 +36,7 @@
   </div>
   <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
   <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
-  <Graph v-else :model_reference="'LawModel'"/>
+  <Graph v-else :model_reference="'BIOMD0000000011'"/>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ import SingleViewer from './components/SingleViewer.vue'
 import MultipleViewer from './components/MultipleViewer.vue'
 import Graph from './components/GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
-import * as models from '../public/models/LawModel.js'
+import * as models from '../public/models/BIOMD0000000011.js'
 import { PkgWrapper } from "@reside-ic/odinjs"
 import { ref } from 'vue'
 import Popper from "vue3-popper";
@@ -71,11 +71,11 @@ export default {
   },
 
   setup() {
-    let time = ref(20)
+    let time = ref(5)
     let time_interval = 0.3
     let multiple = ref(false)
     let graph = ref(false)
-    const mod = new PkgWrapper(models.LawModel, {}, "error")
+    const mod = new PkgWrapper(models.BIOMD0000000011, {}, "error")
     const times = range(0, time.value, time_interval)
     const results_all = mod.run(times, null, {})
     const results_names = results_all.names
@@ -120,7 +120,7 @@ export default {
 
   methods: {
     reload() {
-      const mod = new PkgWrapper(models.LawModel, this.parameters, "error")
+      const mod = new PkgWrapper(models.BIOMD0000000011, this.parameters, "error")
       this.mod = mod
       const times = range(0, this.time, this.time_interval)
       const results_all = mod.run(times, null, {})
@@ -132,7 +132,7 @@ export default {
     
     async extractParameters() {
       try {
-        const response = await fetch('./models/LawModel.js');
+        const response = await fetch('./models/BIOMD0000000011.js');
         if (response.ok) {
           let fileContent = await response.text();
           let parameters_split = fileContent.replaceAll("this.base.user.setUserScalar(user, ","$").split("$")
