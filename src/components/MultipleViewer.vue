@@ -32,8 +32,10 @@ export default {
             let results = []
             let resultsDict = {}
             let max_y = {}
+            let min_y = {}
             for (let j = 0; j < results_names.length; j++) {
-                max_y[results_names[j]] = 0
+                max_y[results_names[j]] = - 1000000000
+                min_y[results_names[j]] = 1000000000
             }
             for (let i = 0; i < results_y.length; i++) {
                 for (let j = 0; j < results_names.length; j++) {
@@ -44,6 +46,9 @@ export default {
                     results.push(resultsDict)
                     if (results_y[i][j] > max_y[results_names[j]]) {
                         max_y[results_names[j]] = results_y[i][j]
+                    }
+                    if (results_y[i][j] < min_y[results_names[j]]) {
+                        min_y[results_names[j]] = results_y[i][j]
                     }
                 }
             }
@@ -83,7 +88,7 @@ export default {
 
             for (let i = 0; i < results_names.length; i++) {
                 y_scales[results_names[i]] = d3.scaleLinear()
-                    .domain([0, max_y[results_names[i]]*1.1])
+                    .domain([min_y[results_names[i]] - Math.abs(0.1*min_y[results_names[i]]), max_y[results_names[i]]*1.1])
                     .range([height, 0])
             }
 

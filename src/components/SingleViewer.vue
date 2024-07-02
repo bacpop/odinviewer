@@ -33,7 +33,8 @@ export default {
 
             let results = []
             let resultsDict = {}
-            let max_y = 0
+            let max_y = - 1000000000
+            let min_y = 1000000000
             for (let i = 0; i < results_y.length; i++) {
                 for (let j = 0; j < results_names.length; j++) {
                     resultsDict = {}
@@ -43,6 +44,9 @@ export default {
                     results.push(resultsDict)
                     if (results_y[i][j] > max_y) {
                         max_y = results_y[i][j]
+                    }
+                    if (results_y[i][j] < min_y) {
+                        min_y = results_y[i][j]
                     }
                 }
             }
@@ -65,7 +69,7 @@ export default {
                 .range([0, width])
 
             const y_scale = d3.scaleLinear()
-                .domain([0, max_y*1.1])
+                .domain([min_y - Math.abs(0.1*min_y), max_y*1.1])
                 .range([height, 0])
 
             // Add the x-axis
