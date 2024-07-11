@@ -1,17 +1,58 @@
 <template>
+    <div id="ymax_slider">
+        <label for="ymax">Maximum y-value</label>
+        <VueSlider 
+            v-model="ymax" 
+            :min="70"
+            :max="100"
+            :interval="0.1"
+            :tooltip="'none'"
+            :direction="'btt'"
+            :height="450"
+            style="margin-top: 10px;"
+        >
+        </VueSlider>
+    </div>
     <svg id="ViewerContainer"></svg>    
 </template>
 
 <script>
 import * as d3 from 'd3'
 import { getTextWidth } from "./functions.js"
+import VueSlider from 'vue-3-slider-component'
+import { ref, watch } from 'vue'
 
 export default {
     name: 'SingleViewer',
     props: ['times', 'results_names', 'results_y'],
+
+    components: {
+        VueSlider
+    },
+
+    setup() {
+        const ymax = ref(localStorage.getItem('ymax') || 100)
+        // Save the value of ymax to localStorage
+        watch(ymax, (newValue) => {
+            localStorage.setItem('ymax', newValue)
+        })
+
+        let max_y = ref(-1000000000)
+        let min_y = ref(1000000000)
+
+        return { ymax, max_y, min_y}
+    },
+
     mounted() {
         this.createViewer()
     },
+
+    watch: {
+        ymax() {
+            this.createViewer()
+        }
+    },
+
     methods: {
         createViewer() {
 
@@ -33,8 +74,7 @@ export default {
 
             let results = []
             let resultsDict = {}
-            let max_y = - 1000000000
-            let min_y = 1000000000
+
             for (let i = 0; i < results_y.length; i++) {
                 for (let j = 0; j < results_names.length; j++) {
                     resultsDict = {}
@@ -42,17 +82,17 @@ export default {
                     resultsDict["name"] = results_names[j]
                     resultsDict["times"] = times[i]
                     results.push(resultsDict)
-                    if (results_y[i][j] > max_y) {
-                        max_y = results_y[i][j]
+                    if (results_y[i][j] > this.max_y) {
+                        this.max_y = Math.ceil(results_y[i][j])
                     }
-                    if (results_y[i][j] < min_y) {
-                        min_y = results_y[i][j]
+                    if (results_y[i][j] < this.min_y) {
+                        this.min_y = Math.floor(results_y[i][j])
                     }
                 }
             }
 
             const margin = {top: 20, right: 50, bottom: 50, left: 50}
-            const width = 0.9*window.innerWidth - margin.left - margin.right
+            const width = 0.7*window.innerWidth - margin.left - margin.right
             const height = 500 - margin.top - margin.bottom
 
             const svg = d3.select("#ViewerContainer")
@@ -69,7 +109,7 @@ export default {
                 .range([0, width])
 
             const y_scale = d3.scaleLinear()
-                .domain([min_y - Math.abs(0.1*min_y), max_y*1.1])
+                .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
                 .range([height, 0])
 
             // Add the x-axis
@@ -132,3 +172,18 @@ export default {
     }
 }
 </script>
+
+<style>
+#ymax_slider {
+    width: 19%;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+
+#ViewerContainer {
+    width: 70%;
+    height: 500px;
+    margin-top: 10px;
+}
+</style>
