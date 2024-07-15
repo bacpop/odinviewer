@@ -1,6 +1,6 @@
 <template>
     <div id="ymax_slider">
-        <label for="ymax">Maximum y-value</label>
+        <p>Maximum y-value</p>
         <VueSlider 
             v-model="ymax" 
             :min="70"
@@ -83,16 +83,16 @@ export default {
                     resultsDict["times"] = times[i]
                     results.push(resultsDict)
                     if (results_y[i][j] > this.max_y) {
-                        this.max_y = Math.ceil(results_y[i][j])
+                        this.max_y = results_y[i][j]
                     }
                     if (results_y[i][j] < this.min_y) {
-                        this.min_y = Math.floor(results_y[i][j])
+                        this.min_y = results_y[i][j]
                     }
                 }
             }
 
             const margin = {top: 20, right: 50, bottom: 50, left: 50}
-            const width = 0.7*window.innerWidth - margin.left - margin.right
+            const width = 0.8*window.innerWidth - margin.left - margin.right
             const height = 500 - margin.top - margin.bottom
 
             const svg = d3.select("#ViewerContainer")
@@ -175,15 +175,23 @@ export default {
 
 <style>
 #ymax_slider {
-    width: 19%;
+    width: 17%;
     margin-left: 10px;
     margin-top: 10px;
     float: left;
 }
 
-#ViewerContainer {
-    width: 70%;
-    height: 500px;
+svg#ViewerContainer {
     margin-top: 10px;
+    width: 80%;
+    height: 500px;
 }
+
+p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px;
+    margin-bottom: 5px
+}
+
 </style>
