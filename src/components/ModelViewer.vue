@@ -15,7 +15,7 @@
             <VueSlider 
                 v-model="time" 
                 :min="5"
-                :max="2000"
+                :max="1000"
                 :interval="1"
                 :tooltip="'none'"
                 >
@@ -26,15 +26,15 @@
             <Popper>
                 <button>Choose initial parameters</button>
                 <template #content>
-                <div v-for="value in Object.entries(parameters)" :key="value[1]">
+                <div v-for="value in Object.entries(this.parameters)" :key="value[1]">
                     <label class="keys">{{ value[0] }}</label>
-                    <input class="values" type="number" :value="value[1]" @change="event => parameters[value[0]] = +event.target.value"/>
+                    <input class="values" type="number" :value="value[1]" @change="event => this.parameters[value[0]] = +event.target.value"/>
                 </div>
                 <div class="parameters_button">
                     <button @click="reload">Reload model with new parameters</button>
                 </div>
                 <div class="parameters_button">
-                    <button @click="Object.assign(parameters, initial_parameters); reload()">Reset parameters</button>
+                    <button @click="Object.assign(this.parameters, this.initial_parameters); reload()">Reset parameters</button>
                 </div>
                 </template>
             </Popper>
@@ -132,7 +132,8 @@ export default {
         },
 
         reload() {
-            const mod = new PkgWrapper(this.model.model, this.parameters, "error")
+            console.log(this.parameters)
+            const mod = new PkgWrapper(this.model, this.parameters, "error")
             this.mod = mod
             const times = range(0, this.time, this.time_interval)
             const results_all = mod.run(times, null, {})
