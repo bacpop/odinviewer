@@ -1,7 +1,7 @@
 <template>
   <h1>SBMLtoOdin Viewer</h1>
 
-  <input type="text" v-model="path" placeholder="Enter the model name" @keyup.enter="loadModel" >
+  <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="no_model=true" @keydown.enter="loadModel" @keydown.delete="model_loaded=false" >
   <button v-if="!model_loaded" @click="loadModel">Load model</button>
   <button v-if="model_loaded" @click="model_loaded=!model_loaded; path=''">Clear model</button>
   <div v-if="model_loaded && file_names.includes(path)">
