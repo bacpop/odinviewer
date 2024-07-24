@@ -31,12 +31,14 @@ export default {
     },
 
     setup() {
+        // The slider of the x_axis reloads this component, so we need to store the ymax in the local storage if we want to keep it
         const ymax = ref(localStorage.getItem('ymax') || 100)
-        // Save the value of ymax to localStorage
+        
         watch(ymax, (newValue) => {
             localStorage.setItem('ymax', newValue)
         })
 
+        // We will compute this values later so we give them extreme values
         let max_y = ref(-1000000000)
         let min_y = ref(1000000000)
 
@@ -46,6 +48,7 @@ export default {
     },
 
     mounted() {
+        // We want to reset the value of ymax when the model is changed
         if (this.times[this.times.length-1] == 5) {
             this.ymax = 100
             localStorage.setItem('ymax', this.ymax)
@@ -56,11 +59,13 @@ export default {
 
     watch: {
         ymax() {
+            // We don't need to recompute the results when changing ymax because the results are not affected by it
             this.createViewer(this.results)
         }
     },
 
     methods: {
+        // Transform the data into a format that can be plotted easily with d3
         transform_data() {
             let times = this.times
             const results_names = this.results_names

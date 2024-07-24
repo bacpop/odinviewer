@@ -92,7 +92,7 @@ export default {
     },
 
     watch: {
-        time: function(newTime) {
+        time: function() {
             const times = range(0, this.time, this.len)
             this.times = times
             const results_all = this.mod.run(times, null, {})

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { convertSbmlToSbgnml } from './functions.js';
+import { convertSbmlToImage } from './functions.js';
 import Popper from "vue3-popper";
 
 export default {
@@ -32,11 +32,11 @@ export default {
 
   mounted() {
     fetch(`./models/${this.model_reference}.xml`).then( fileString => fileString.text())
-        .then( text => {
-            convertSbmlToSbgnml(text).then( img => {
-              this.imageData = img;
-            });
-        })
+      .then( text => {
+        convertSbmlToImage(text).then( img => {
+          this.imageData = img;
+        });
+      })
   },
 }
 </script>

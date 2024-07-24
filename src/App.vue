@@ -4,6 +4,8 @@
   <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="no_model=true" @keydown.enter="loadModel" @keydown.delete="model_loaded=false" >
   <button v-if="!model_loaded" @click="loadModel">Load model</button>
   <button v-if="model_loaded" @click="model_loaded=!model_loaded; path=''">Clear model</button>
+
+  <!-- Load the model only if its ID is in the public folder -->
   <div v-if="model_loaded && file_names.includes(path)">
     <h2>Model: {{ path }}</h2>
     <ModelViewer :path="path"/>
@@ -60,6 +62,7 @@ export default {
       }
     },
 
+    // Open the file containing the names of the models and extract them into a list
     async extractFileNames() {
       try {
         const response = await fetch('./models/file_names.txt');

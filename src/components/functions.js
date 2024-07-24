@@ -15,23 +15,19 @@ export function getTextWidth(font_size, font_family, text = "G") {
     const width = context?.measureText(inputText).width; 
     return width;
 }
-
-// This function is used to turn SBML into SBGN-ML
-export async function convertSbmlToSbgnml(xml) { 
+export async function convertSbmlToImage(xml) { 
   
     const layoutOptions = {
       name: "fcose",
       randomize: true,
       padding: 30,
       nodeDimensionsIncludeLabels: true,
-      // ... other layout options
     };
     const imageOptions = {
       format: "png",
       background: "transparent",
       width: 1280,
       height: 720,
-      color: "bluescale",
     };
   
     const settings = {
@@ -40,9 +36,10 @@ export async function convertSbmlToSbgnml(xml) {
         Accept: 'application/json',
         'Content-Type': 'text/plain'
       },
-      body: xml + JSON.stringify({layoutOptions, imageOptions}) // Concatenate strings
+      body: xml + JSON.stringify({layoutOptions, imageOptions})
     };
   
+    // We send the SBML to the server to get an image of the graph
     try {
       const response = await fetch("http://syblars.cs.bilkent.edu.tr/sbml", settings);
       const result = await response.json();

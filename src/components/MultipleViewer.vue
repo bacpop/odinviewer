@@ -34,9 +34,12 @@ export default {
             let max_y = {}
             let min_y = {}
             for (let j = 0; j < results_names.length; j++) {
+                // We will compute this values later so we give them extreme values
                 max_y[results_names[j]] = - 1000000000
                 min_y[results_names[j]] = 1000000000
             }
+
+            // Transform the data into a format that can be plotted easily with d3
             for (let i = 0; i < results_y.length; i++) {
                 for (let j = 0; j < results_names.length; j++) {
                     resultsDict = {}
