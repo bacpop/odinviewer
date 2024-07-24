@@ -6,18 +6,15 @@
             <input type="checkbox" id="graph" v-model="graph"/>
             <label for="single">Show a graph of the model</label>
         </div>
-        <!-- <div v-for="file_name in file_names" :key="file_name">
-        <button>Load {{ file_name }}</button>
-        </div> -->
     
         <div id="time_slider">
             <label for="time">Time: {{ time }}</label>
             <VueSlider 
-                v-model="time" 
+                v-model="time"
+                :lazy="true" 
                 :min="5"
                 :max="1000"
                 :interval="1"
-                :tooltip="'none'"
                 >
             </VueSlider>
         </div>
@@ -70,7 +67,7 @@ export default {
     data() {
         return {
             time: ref(5),
-            time_interval: 0.3,
+            len: 1000,
             multiple: ref(false),
             graph: ref(false),
             mod: null,
@@ -95,20 +92,12 @@ export default {
     },
 
     watch: {
-        time: function(newTime, oldTime) {
-            if (oldTime < newTime) {
-                let time_diff = range(this.times[this.times.length - 1], newTime, this.time_interval)
-                const results_all = this.mod.run(time_diff, this.results_y[this.results_y.length - 1], {})
-                let new_results = results_all.y
-                new_results.shift()
-                time_diff.shift()
-                this.results_y = this.results_y.concat(new_results)
-                this.times = this.times.concat(time_diff)
-            }
-            else {
-                this.times = range(0, newTime, this.time_interval)
-                this.results_y = this.results_y.slice(0, newTime/this.time_interval + 1)
-            }
+        time: function(newTime) {
+            const times = range(0, this.time, this.len)
+            this.times = times
+            const results_all = this.mod.run(times, null, {})
+            this.results_y = results_all.y
+
             this.update_single += 1
             this.update_multiple += 1
         },
@@ -122,23 +111,24 @@ export default {
 
             const mod = new PkgWrapper(model, this.parameters, "error")
             this.mod = mod
-            const times = range(0, this.time, this.time_interval)
+            const times = range(0, this.time, this.len)
             this.times = times
             const results_all = mod.run(times, null, {})
             this.results_names = results_all.names
             this.results_y = results_all.y
+
             this.update_single += 1
             this.update_multiple += 1
         },
 
         reload() {
-            console.log(this.parameters)
             const mod = new PkgWrapper(this.model, this.parameters, "error")
             this.mod = mod
-            const times = range(0, this.time, this.time_interval)
+            const times = range(0, this.time, this.len)
             const results_all = mod.run(times, null, {})
             this.results_names = results_all.names
             this.results_y = results_all.y
+            
             this.update_single += 1
             this.update_multiple += 1
         },
@@ -167,8 +157,7 @@ export default {
     }
 }
 
-function range(start, end, step){
-    const len = Math.floor((end - start) / step) + 1
-    return Array(len).fill().map((_, idx) => start + (idx * step))
+function range(start, end, len){
+    return Array(len).fill().map((_, idx) => start + idx * (end - start) / (len - 1));
 }
 </script>
