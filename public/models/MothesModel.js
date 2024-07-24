@@ -1,4 +1,4 @@
-export class MothesModel {
+export class model {
   constructor(base, user, unusedUserAction) {
     this.base = base;
     this.internal = {};

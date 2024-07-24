@@ -1,4 +1,4 @@
-export class BIOMD0000000008 {
+export class model {
   constructor(base, user, unusedUserAction) {
     this.base = base;
     this.internal = {};

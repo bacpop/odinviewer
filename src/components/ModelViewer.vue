@@ -1,0 +1,173 @@
+<template>
+    <div v-if="model!=null" id="model_viewer">
+        <div id="checkboxes">
+            <input v-if="!graph" type="checkbox" id="multiple" v-model="multiple"/>
+            <label v-if="!graph" for="multiple">Show each chart in its plot</label>
+            <input type="checkbox" id="graph" v-model="graph"/>
+            <label for="single">Show a graph of the model</label>
+        </div>
+        <!-- <div v-for="file_name in file_names" :key="file_name">
+        <button>Load {{ file_name }}</button>
+        </div> -->
+    
+        <div id="time_slider">
+            <label for="time">Time: {{ time }}</label>
+            <VueSlider 
+                v-model="time" 
+                :min="5"
+                :max="2000"
+                :interval="1"
+                :tooltip="'none'"
+                >
+            </VueSlider>
+        </div>
+    
+        <div v-if="!graph" id="initial_parameters">
+            <Popper>
+                <button>Choose initial parameters</button>
+                <template #content>
+                <div v-for="value in Object.entries(parameters)" :key="value[1]">
+                    <label class="keys">{{ value[0] }}</label>
+                    <input class="values" type="number" :value="value[1]" @change="event => parameters[value[0]] = +event.target.value"/>
+                </div>
+                <div class="parameters_button">
+                    <button @click="reload">Reload model with new parameters</button>
+                </div>
+                <div class="parameters_button">
+                    <button @click="Object.assign(parameters, initial_parameters); reload()">Reset parameters</button>
+                </div>
+                </template>
+            </Popper>
+        </div>
+        <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
+        <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
+        <Graph v-else :model_reference="path"/>
+    </div>
+</template>
+
+<script>
+import SingleViewer from './SingleViewer.vue'
+import MultipleViewer from './MultipleViewer.vue'
+import Graph from './GraphViewer.vue'
+import VueSlider from 'vue-3-slider-component'
+import { PkgWrapper } from "@reside-ic/odinjs"
+import { ref } from 'vue'
+import Popper from "vue3-popper";
+
+export default {
+    name: 'ModelViewer',
+
+    components: {
+        SingleViewer,
+        MultipleViewer,
+        Graph,
+        VueSlider,
+        Popper
+    },
+
+    props: ['path'],
+
+    data() {
+        return {
+            time: ref(5),
+            time_interval: 0.3,
+            multiple: ref(false),
+            graph: ref(false),
+            mod: null,
+            times: null,
+            results_names: null,
+            results_y: null,
+            update_single: 0,
+            update_multiple: 0,
+            model: null,
+            parameters: {},
+            initial_parameters: {},
+            file_names: [],
+        }
+    },
+
+    mounted() {
+        this.load_model()
+    },
+
+    created() {
+        this.extractParameters()
+    },
+
+    watch: {
+        time: function(newTime, oldTime) {
+            if (oldTime < newTime) {
+                let time_diff = range(this.times[this.times.length - 1], newTime, this.time_interval)
+                const results_all = this.mod.run(time_diff, this.results_y[this.results_y.length - 1], {})
+                let new_results = results_all.y
+                new_results.shift()
+                time_diff.shift()
+                this.results_y = this.results_y.concat(new_results)
+                this.times = this.times.concat(time_diff)
+            }
+            else {
+                this.times = range(0, newTime, this.time_interval)
+                this.results_y = this.results_y.slice(0, newTime/this.time_interval + 1)
+            }
+            this.update_single += 1
+            this.update_multiple += 1
+        },
+    },
+
+    methods: {
+        async load_model() {
+            let models = await import(`../../public/models/${this.path}.js`)
+            let model = models.model
+            this.model = model
+
+            const mod = new PkgWrapper(model, this.parameters, "error")
+            this.mod = mod
+            const times = range(0, this.time, this.time_interval)
+            this.times = times
+            const results_all = mod.run(times, null, {})
+            this.results_names = results_all.names
+            this.results_y = results_all.y
+            this.update_single += 1
+            this.update_multiple += 1
+        },
+
+        reload() {
+            const mod = new PkgWrapper(this.model.model, this.parameters, "error")
+            this.mod = mod
+            const times = range(0, this.time, this.time_interval)
+            const results_all = mod.run(times, null, {})
+            this.results_names = results_all.names
+            this.results_y = results_all.y
+            this.update_single += 1
+            this.update_multiple += 1
+        },
+        
+        async extractParameters() {
+            try {
+                // Just keep i'th extract with i number of the file name we consider
+                const response = await fetch(`./models/${this.path}.js`);
+                if (response.ok) {
+                let fileContent = await response.text();
+                let parameters_split = fileContent.replaceAll("this.base.user.setUserScalar(user, ","$").split("$")
+
+                let parameters = {}
+                for (let i = 1; i < parameters_split.length; i++) {
+                    parameters[parameters_split[i].split(",")[0].replaceAll('"', '')] = +parameters_split[i].split(",")[2]
+                }
+                this.parameters = parameters
+                Object.assign(this.initial_parameters, this.parameters)
+                } else {
+                console.error('Failed to load file');
+                }
+            } catch (error) {
+                console.error('Error fetching file:', error);
+            }
+        },
+    }
+}
+
+function range(start, end, step){
+    const len = Math.floor((end - start) / step) + 1
+    return Array(len).fill().map((_, idx) => start + (idx * step))
+}
+</script>
