@@ -40,6 +40,7 @@ export async function convertSbmlToImage(xml) {
     };
   
     // We send the SBML to the server to get an image of the graph
+    // https://github.com/iVis-at-Bilkent/syblars
     try {
       const response = await fetch("http://syblars.cs.bilkent.edu.tr/sbml", settings);
       const result = await response.json();
