@@ -7,7 +7,7 @@
             <label for="single">Show a graph of the model</label>
         </div>
     
-        <div id="time_slider">
+        <div id="time_slider" v-if="!graph">
             <label for="time">Time: {{ time }}</label>
             <VueSlider 
                 v-model="time"
@@ -38,14 +38,14 @@
         </div>
         <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
         <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
-        <Graph v-else :model_reference="path"/>
+        <GraphViewer v-else :model_reference="path"/>
     </div>
 </template>
 
 <script>
 import SingleViewer from './SingleViewer.vue'
 import MultipleViewer from './MultipleViewer.vue'
-import Graph from './GraphViewer.vue'
+import GraphViewer from './GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import { PkgWrapper } from "@reside-ic/odinjs"
 import { ref } from 'vue'
@@ -57,7 +57,7 @@ export default {
     components: {
         SingleViewer,
         MultipleViewer,
-        Graph,
+        GraphViewer,
         VueSlider,
         Popper
     },
@@ -105,7 +105,7 @@ export default {
 
     methods: {
         async load_model() {
-            let models = await import(`../../public/models/${this.path}.js`)
+            let models = await import(`../../models/${this.path}.js`)
             let model = models.model
             this.model = model
 
@@ -161,3 +161,46 @@ function range(start, end, len){
     return Array(len).fill().map((_, idx) => start + idx * (end - start) / (len - 1));
 }
 </script>
+
+<style>
+:root {
+  --popper-theme-background-color: lightgray;
+  --popper-theme-background-color-hover: lightgray;
+  --popper-theme-text-color: black;
+  --popper-theme-border-width: 3px;
+  --popper-theme-border-style: solid;
+  --popper-theme-border-radius: 6px;
+  --popper-theme-padding: 5px;
+}
+
+.keys {
+  display: inline-block;
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+.values {
+  display: inline-block;
+  width: 150px;
+}
+
+#time_slider {
+  margin: 10px 20px;
+}
+
+#checkboxes {
+  margin: 10px 20px;
+}
+
+.parameters_button {
+  margin: 3px 0;
+}
+
+#initial_parameters {
+  margin: 0px 50px;
+}
+
+#graph {
+  margin-left: 20px;
+}
+</style>

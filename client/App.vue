@@ -20,7 +20,7 @@
 
 <script>
 import { ref } from 'vue'
-import ModelViewer from './components/ModelViewer.vue';
+import ModelViewer from './src/components/ModelViewer.vue';
 
 export default {
   name: 'App',
@@ -66,8 +66,10 @@ export default {
     async extractFileNames() {
       try {
         const response = await fetch('./models/file_names.txt');
+        console.log(response)
         if (response.ok) {
           let fileContent = await response.text();
+          console.log(fileContent)
           let file_names = fileContent.split("\n").slice(0, -1)
           for (let i = 0; i < file_names.length; i++) {
             file_names[i] = file_names[i].split("\r")[0]
@@ -84,47 +86,4 @@ export default {
 }
 
 </script>
-
-<style>
-:root {
-  --popper-theme-background-color: lightgray;
-  --popper-theme-background-color-hover: lightgray;
-  --popper-theme-text-color: black;
-  --popper-theme-border-width: 3px;
-  --popper-theme-border-style: solid;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 5px;
-}
-
-.keys {
-  display: inline-block;
-  width: 150px;
-  margin-bottom: 5px;
-}
-
-.values {
-  display: inline-block;
-  width: 150px;
-}
-
-#time_slider {
-  margin: 10px 20px;
-}
-
-#checkboxes {
-  margin: 10px 20px;
-}
-
-.parameters_button {
-  margin: 3px 0;
-}
-
-#initial_parameters {
-  margin: 0px 50px;
-}
-
-#graph {
-  margin-left: 20px;
-}
-</style>
 

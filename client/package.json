@@ -1,0 +1,22 @@
+{
+  "name": "test_backend_v3",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"nodemon ../server/src/main.js\" \"vite\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "cytoscape": "^3.30.1",
+    "cytoscape-fcose": "^2.2.0",
+    "nodemon": "^3.1.4",
+    "vue": "^3.4.29"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "concurrently": "^8.2.2",
+    "vite": "^5.3.1"
+  }
+}
