@@ -1,10 +1,18 @@
 <template>
-    <div v-if="model!=null" id="model_viewer">
+    <div v-if="model!=null">
         <div id="checkboxes">
             <input v-if="!graph" type="checkbox" id="multiple" v-model="multiple"/>
             <label v-if="!graph" for="multiple">Show each chart in its plot</label>
             <input type="checkbox" id="graph" v-model="graph"/>
-            <label for="single">Show a graph of the model</label>
+            <label for="single" id="graph_text">Show a graph of the model</label>
+            <div v-if="graph">
+            <Popper>
+                <button id="legend_button">Legend</button>
+                <template #content>
+                <img src="../assets/SBML_stylesheet.svg" alt="Legend" id="legend">
+                </template>
+            </Popper>
+        </div>
         </div>
     
         <div id="time_slider" v-if="!graph">
@@ -36,6 +44,7 @@
                 </template>
             </Popper>
         </div>
+
         <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
         <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
         <GraphViewer v-else :model_reference="path"/>
@@ -176,7 +185,7 @@ function range(start, end, len){
 .keys {
   display: inline-block;
   width: 150px;
-  margin-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 .values {
@@ -185,22 +194,21 @@ function range(start, end, len){
 }
 
 #time_slider {
-  margin: 10px 20px;
+  padding: 10px 20px;
 }
 
 #checkboxes {
-  margin: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.parameters_button {
-  margin: 3px 0;
+#checkboxes label {
+  margin-right: 10px;
+  margin-left: 3px
 }
 
 #initial_parameters {
   margin: 0px 50px;
-}
-
-#graph {
-  margin-left: 20px;
 }
 </style>

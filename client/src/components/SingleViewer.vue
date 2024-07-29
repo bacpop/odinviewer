@@ -1,19 +1,21 @@
 <template>
-    <div id="ymax_slider">
-        <p>Maximum y-value</p>
-        <VueSlider 
-            v-model="ymax" 
-            :min="70"
-            :max="100"
-            :interval="0.1"
-            :tooltip="'none'"
-            :direction="'btt'"
-            :height="450"
-            style="margin-top: 10px;"
-        >
-        </VueSlider>
-    </div>
-    <svg id="ViewerContainer"></svg>    
+    <div id="SingleViewerContainer">
+        <div id="ymax_slider">
+            <p>Maximum y-value</p>
+            <VueSlider 
+                v-model="ymax" 
+                :min="70"
+                :max="100"
+                :interval="0.1"
+                :tooltip="'none'"
+                :direction="'btt'"
+                :height="300"
+                style="margin-top: 10px;"
+            >
+            </VueSlider>
+        </div>
+        <svg id="SinglePlotContainer"></svg>
+    </div>    
 </template>
 
 <script>
@@ -93,13 +95,18 @@ export default {
             return results
         },
 
-        createViewer(results) {            
-
+        createViewer(results) {  
             const margin = {top: 20, right: 50, bottom: 50, left: 50}
-            const width = 0.8*window.innerWidth - margin.left - margin.right
-            const height = 500 - margin.top - margin.bottom
+            const width = window.innerWidth - 2*getTextWidth(16, "Arial", "Maximum y-value") - margin.left - margin.right
+            const height = document.getElementById("appContainer").offsetHeight 
+                        - document.getElementById("title").offsetHeight 
+                        - document.getElementById("chooseModel").offsetHeight 
+                        - document.getElementById("checkboxes").offsetHeight
+                        - document.getElementById("time_slider").offsetHeight
+                        - 40 - margin.top - margin.bottom
 
-            const svg = d3.select("#ViewerContainer")
+
+            const svg = d3.select("#SinglePlotContainer")
             svg.selectAll("*").remove()
             var svg_container = svg.attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
@@ -178,24 +185,24 @@ export default {
 </script>
 
 <style>
-#ymax_slider {
-    width: 17%;
-    margin-left: 10px;
-    margin-top: 10px;
-    float: left;
+#SingleViewerContainer {
+    margin-top: 20px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
 }
 
-svg#ViewerContainer {
-    margin-top: 10px;
-    width: 80%;
-    height: 500px;
+#ymax_slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 p {
     font-size: 16px;
     font-weight: bold;
     margin: 0px;
-    margin-bottom: 5px
+    margin-bottom: 10px
 }
 
 </style>

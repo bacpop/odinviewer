@@ -127,9 +127,3 @@ export default {
     }
 }
 </script>
-
-<style>
-#ViewerContainer {
-    width: 100%;
-}
-</style>

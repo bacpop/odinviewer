@@ -1,20 +1,26 @@
 <template>
-  <h1>SBMLtoOdin Viewer</h1>
+  <div id="appContainer">
+    <h1 id="title">SBMLtoOdin Viewer</h1>
 
-  <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="no_model=true" @keydown.enter="loadModel" @keydown.delete="model_loaded=false" >
-  <button v-if="!model_loaded" @click="loadModel">Load model</button>
-  <button v-if="model_loaded" @click="model_loaded=!model_loaded; path=''">Clear model</button>
+    <div id="chooseModel">
+      <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="no_model=true" @keydown.enter="loadModel" @keydown.delete="model_loaded=false" >
+      <button v-if="!model_loaded" @click="loadModel">Load model</button>
+      <button v-if="model_loaded" @click="model_loaded=!model_loaded; path=''">Clear model</button>
+        <!-- Load the model only if its ID is in the public folder -->
+      <div v-if="model_loaded && file_names.includes(path)">
+        <h2>Model: {{ path }}</h2>
+      </div>
+      <div v-else-if="no_model">
+        <h2>No model is loaded</h2>
+      </div>
+      <div v-else>
+        <h2>Model not found</h2>
+      </div>
+    </div>
 
-  <!-- Load the model only if its ID is in the public folder -->
-  <div v-if="model_loaded && file_names.includes(path)">
-    <h2>Model: {{ path }}</h2>
-    <ModelViewer :path="path"/>
-  </div>
-  <div v-else-if="no_model">
-    <h2>No model is loaded</h2>
-  </div>
-  <div v-else>
-    <h2>Model not found</h2>
+    <div id="model_viewer" v-if="model_loaded && file_names.includes(path)">
+      <ModelViewer :path="path"/>
+    </div>
   </div>
 </template>
 
@@ -87,3 +93,39 @@ export default {
 
 </script>
 
+<style>
+#appContainer {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  box-sizing: border-box;
+}
+
+#title {
+  text-align: center;
+  font-size: 50px;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+#chooseModel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  margin-left: 20px;
+}
+
+#model_viewer {
+  width: 100%;
+  flex-grow: 1;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+</style>

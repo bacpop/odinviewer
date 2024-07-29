@@ -1,10 +1,4 @@
 <template>
-  <Popper>
-    <button id="legend_button">Legend</button>
-    <template #content>
-      <img src="../assets/SBML_stylesheet.svg" alt="Legend" id="legend">
-    </template>
-  </Popper>
   <p v-if="!modelLoaded">Loading image...</p> 
   <div id="graphHolder"></div>
 </template>
@@ -14,16 +8,11 @@ import TurnSBMLtoCytoscape from '../services/Request'
 import cytoscape from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 import { adjustStylesheet } from './stylesheet';
-import Popper from "vue3-popper";
 
 cytoscape.use(fcose);
 
 export default {
   name: 'GraphViewer',
-
-  components: {
-    Popper
-  },
 
   props: {
     model_reference: String,
@@ -81,25 +70,13 @@ export default {
 
 <style>
 #graphHolder {
-  height: 600px;
-  width: 1200px;
-  position: relative;
+  width: calc(100% - 40px);
+  height: 400px;
+  margin: 40
 }
 
-:root {
-  --popper-theme-background-color: lightgray;
-  --popper-theme-background-color-hover: lightgray;
-  --popper-theme-text-color: black;
-  --popper-theme-border-width: 3px;
-  --popper-theme-border-style: solid;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 5px;
-}
-
-#legend {
-  height: 600px;
-  width: auto;
-
+#legend_button {
+    float: left;
 }
 
 </style>
