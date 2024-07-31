@@ -4,7 +4,6 @@
 </template>
 
 <script>
-import TurnSBMLtoCytoscape from '../services/Request'
 import cytoscape from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 import { adjustStylesheet } from './stylesheet';
@@ -26,28 +25,20 @@ export default {
 
   mounted() {
     console.log("Reading model")
-    fetch(`./models/${this.model_reference}.xml`).then( fileString => fileString.text())
-      .then( text => {
-        let sbml = text;
-        let response = this.getCytoscape(sbml);
-        response.then( res => {
-          this.modelLoaded = true;
-          const cyContainer = document.getElementById('graphHolder');
-          if (cyContainer) {
-            this.render(res);
-          } else {
-            console.error('Cytoscape container not found!');
-          }
-        })
+    fetch(`./models/${this.model_reference}.json`).then( fileString => fileString.text())
+      .then( json => {
+        let sbml = JSON.parse(json)
+        this.modelLoaded = true;
+        const cyContainer = document.getElementById('graphHolder');
+        if (cyContainer) {
+          this.render(sbml);
+        } else {
+          console.error('Cytoscape container not found!');
+        }
       })
   },
 
   methods: {
-    async getCytoscape(sbml) {
-      console.log("Turning SBML to Cytoscape")
-      let response = await TurnSBMLtoCytoscape(sbml)
-      return response
-    },
 
     render(elements) {
 
