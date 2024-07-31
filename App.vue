@@ -3,9 +3,9 @@
     <h1 id="title">SBMLtoOdin Viewer</h1>
 
     <div id="chooseModel">
-      <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="no_model=true" @keydown.enter="loadModel" @keydown.delete="model_loaded=false" >
+      <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel" @keydown.enter="loadModel" @keydown.delete="clearModel" >
       <button v-if="!model_loaded" @click="loadModel">Load model</button>
-      <button v-if="model_loaded" @click="model_loaded=!model_loaded; path=''">Clear model</button>
+      <button v-if="model_loaded" @click="clearModel; this.path = ''">Clear model</button>
         <!-- Load the model only if its ID is in the public folder -->
       <div v-if="model_loaded && file_names.includes(path)">
         <h2>Model: {{ path }}</h2>
@@ -19,7 +19,7 @@
     </div>
 
     <div id="model_viewer" v-if="model_loaded && file_names.includes(path)">
-      <ModelViewer :path="path"/>
+      <ModelViewer :path="path" :key="path"/>
     </div>
   </div>
 </template>
@@ -41,8 +41,19 @@ export default {
     }
   },
 
-  created() {
-    this.extractFileNames()
+  mounted() {
+    this.extractFileNames().then(() => {
+      let url = window.location.href
+      let model = url.split("id?")[1]
+
+      if (model != undefined && model != "") {
+        model = model.split("/")[0]
+        this.path = model
+        this.loadModel()
+      }
+    })
+
+
   },
 
   setup() {
@@ -60,12 +71,18 @@ export default {
   methods: {
     loadModel() {
       if (this.file_names.includes(this.path)) {
+        window.history.pushState({}, null, window.location.origin + "/id?" + this.path)
         this.model_loaded = true
         this.no_model = true
       }
       else {
         this.no_model = false
       }
+    },
+
+    clearModel() {
+      this.model_loaded = false
+      window.history.pushState({}, null, window.location.origin)
     },
 
     // Open the file containing the names of the models and extract them into a list

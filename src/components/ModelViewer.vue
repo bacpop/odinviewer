@@ -114,7 +114,7 @@ export default {
 
     methods: {
         async load_model() {
-            let models = await import(`../../models/${this.path}.js`)
+            let models = await import(`../../public/models/${this.path}.js`)
             let model = models.model
             this.model = model
 
