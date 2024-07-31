@@ -8,7 +8,7 @@ export default async function TurnSBMLtoCytoscape(sbml_file) {
     };
   
     try {
-        const response = await fetch("http://localhost:3000/sbml", settings);
+        const response = await fetch("https://only-backend-v3.onrender.com/sbml", settings);
     
         // Ensure the response is successful (e.g., status code 200-299)
         if (!response.ok) {
