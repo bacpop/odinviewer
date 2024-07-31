@@ -1,13 +1,21 @@
 <template>
-    <div v-if="model!=null" id="model_viewer">
+    <div v-if="model!=null">
         <div id="checkboxes">
             <input v-if="!graph" type="checkbox" id="multiple" v-model="multiple"/>
             <label v-if="!graph" for="multiple">Show each chart in its plot</label>
             <input type="checkbox" id="graph" v-model="graph"/>
-            <label for="single">Show a graph of the model</label>
+            <label for="single" id="graph_text">Show a graph of the model</label>
+            <div v-if="graph">
+            <Popper>
+                <button id="legend_button">Legend</button>
+                <template #content>
+                <img src="../assets/SBML_stylesheet.svg" alt="Legend" id="legend">
+                </template>
+            </Popper>
+        </div>
         </div>
     
-        <div id="time_slider">
+        <div id="time_slider" v-if="!graph">
             <label for="time">Time: {{ time }}</label>
             <VueSlider 
                 v-model="time"
@@ -36,16 +44,17 @@
                 </template>
             </Popper>
         </div>
+
         <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
         <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
-        <Graph v-else :model_reference="path"/>
+        <GraphViewer v-else :model_reference="path"/>
     </div>
 </template>
 
 <script>
 import SingleViewer from './SingleViewer.vue'
 import MultipleViewer from './MultipleViewer.vue'
-import Graph from './GraphViewer.vue'
+import GraphViewer from './GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import { PkgWrapper } from "@reside-ic/odinjs"
 import { ref } from 'vue'
@@ -57,7 +66,7 @@ export default {
     components: {
         SingleViewer,
         MultipleViewer,
-        Graph,
+        GraphViewer,
         VueSlider,
         Popper
     },
@@ -105,7 +114,7 @@ export default {
 
     methods: {
         async load_model() {
-            let models = await import(`../../public/models/${this.path}.js`)
+            let models = await import(`../../models/${this.path}.js`)
             let model = models.model
             this.model = model
 
@@ -161,3 +170,45 @@ function range(start, end, len){
     return Array(len).fill().map((_, idx) => start + idx * (end - start) / (len - 1));
 }
 </script>
+
+<style>
+:root {
+  --popper-theme-background-color: lightgray;
+  --popper-theme-background-color-hover: lightgray;
+  --popper-theme-text-color: black;
+  --popper-theme-border-width: 3px;
+  --popper-theme-border-style: solid;
+  --popper-theme-border-radius: 6px;
+  --popper-theme-padding: 5px;
+}
+
+.keys {
+  display: inline-block;
+  width: 150px;
+  padding-bottom: 5px;
+}
+
+.values {
+  display: inline-block;
+  width: 150px;
+}
+
+#time_slider {
+  padding: 10px 20px;
+}
+
+#checkboxes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#checkboxes label {
+  margin-right: 10px;
+  margin-left: 3px
+}
+
+#initial_parameters {
+  margin: 0px 50px;
+}
+</style>
