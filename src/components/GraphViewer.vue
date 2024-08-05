@@ -1,5 +1,8 @@
 <template>
-  <p v-if="!modelLoaded">Loading image...</p> 
+  <p v-if="!modelLoaded & !noModelFound">Loading image...</p> 
+  <div v-else-if="noModelFound">
+    <h2>The JSON file for this model doesn't exist</h2>
+  </div>
   <div id="graphHolder"></div>
 </template>
 
@@ -20,6 +23,7 @@ export default {
   data() {
     return {
       modelLoaded: false,
+      noModelFound: false,
     };
   },
 
@@ -36,6 +40,9 @@ export default {
           console.error('Cytoscape container not found!');
         }
       })
+      .catch( error => {
+        this.noModelFound = true;
+      });
   },
 
   methods: {
@@ -65,9 +72,4 @@ export default {
   height: 400px;
   margin: 40
 }
-
-#legend_button {
-    float: left;
-}
-
 </style>

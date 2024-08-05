@@ -90,12 +90,12 @@ export default {
 
     // Open the file containing the names of the models and extract them into a list
     async extractFileNames() {
+      console.log("Extracting file names")
+
       try {
         const response = await fetch('./models/file_names.txt');
-        console.log(response)
         if (response.ok) {
           let fileContent = await response.text();
-          console.log(fileContent)
           let file_names = fileContent.split("\n").slice(0, -1)
           for (let i = 0; i < file_names.length; i++) {
             file_names[i] = file_names[i].split("\r")[0]

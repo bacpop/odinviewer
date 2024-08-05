@@ -1,20 +1,31 @@
 api_path = "http://localhost:3000/sbml"
 # Can be used with https://only-backend-v3.onrender.com/sbml
 # but it will take longer
-path_sbml_files = "./SBMLfiles"
+path_file_names = "../public/models/file_names.txt"
 output_folder = "../public/models"
 
 import requests
 import json
 import os
+import urllib.parse
 
-sbml_files = os.listdir(path_sbml_files)
-sbml_files = [f for f in sbml_files if f.endswith(".xml")]
+def import_from_Biomodels(id):
+    response = requests.get(f"https://www.ebi.ac.uk/biomodels/model/files/{id}.xml")
+    response = response.text
+    file_main = response.split("<main>")[1].split("</main>")[0]
+    file_name = file_main.split("<name>")[1].split("</name>")[0]
+    file_name = urllib.parse.quote_plus(file_name)
+    response2 = requests.get(f"https://www.ebi.ac.uk/biomodels/model/download/{id}.xml?filename={file_name}")
+    return response2.text
+
+sbml_files = open(path_file_names, "r").read().split("\n")
 
 for sbml_file in sbml_files:
+    if sbml_file == "":
+        continue
     print(f"Processing {sbml_file}")
-    with open(f"{path_sbml_files}/{sbml_file}", "r") as f:
-        sbml = f.read()
+    
+    sbml = import_from_Biomodels(sbml_file)
 
     try:
         sbml = sbml.encode("utf-8")

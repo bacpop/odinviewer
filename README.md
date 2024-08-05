@@ -9,13 +9,13 @@ npm install & npm run dev
 npm install & npm run build & npm run preview
 ```
 
-## Adding models on the website
+## Adding models to the website
 
 All models are imported manually on the website to be displayed. 
 
 To add a new model on the website, you need several files:
 - A JavaScript file to describe the ODEs of the model
-- A JSON file to get a graph of the model computed from the SBML file describing the model
+- A JSON file to get a graph of the model
 
 ### Exporting an Odin model into JavaScript
 
@@ -52,6 +52,5 @@ You should also add the name of the model you just added to `file_names.txt` in 
 
 ### Turning SBML files to JSON for the graph construction
 
-You should first upload the SBML file corresponding to the model you wish to add in the TurningSBMLfilesToJSON/SBMLfiles folder.
-
-You can do this by reading the README file in the TurningSBMLfilesToJSON folder.
+For this part to work, all models should appear in the `file_names.txt` file.
+You can do the conversion by reading the README file in the TurningSBMLfilesToJSON folder.

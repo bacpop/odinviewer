@@ -1,15 +1,17 @@
 # Conversion of SBML files to graph in a JSON format
 
-## Load SBML files
+The conversion from SBML to graph is made using [Syblars](https://github.com/iVis-at-Bilkent/syblars/blob/main) (Copyright (c) 2021 i-Vis at Bilkent).
 
-The SBML files that will be turned to a graph are those located in the SBMLfiles folder.
+## Loading SBML files
+
+The SBML files to be converted are listed in the `file_names.txt` file in the public/models folder. The `turnSBMLintoJSON.py` code read the IDs in the file, retrieve these files from the Biomodels database and converts it into JSON. 
 
 ## Running the server
 
 On shell command, you can run locally the API to convert SBML files to graph using the backend folder. Once in this folder, you can just run the following command:
 
 ```sh
-npm start
+npm install & npm start
 ```
 
 ## Doing without the local server

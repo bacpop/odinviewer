@@ -211,4 +211,8 @@ function range(start, end, len){
 #initial_parameters {
   margin: 0px 50px;
 }
+
+#legend {
+    width: 600px;
+}
 </style>
