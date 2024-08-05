@@ -3,9 +3,9 @@
     <h1 id="title">SBMLtoOdin Viewer</h1>
 
     <div id="chooseModel">
-      <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel" @keydown.enter="loadModel" @keydown.delete="clearModel" >
+      <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel(false)" @keydown.enter="loadModel" @keydown.delete="clearModel(false)" >
       <button v-if="!model_loaded" @click="loadModel">Load model</button>
-      <button v-if="model_loaded" @click="clearModel; this.path = ''">Clear model</button>
+      <button v-if="model_loaded" @click="clearModel(true)">Clear model</button>
         <!-- Load the model only if its ID is in the public folder -->
       <div v-if="model_loaded && file_names.includes(path)">
         <h2>Model: {{ path }}</h2>
@@ -80,9 +80,12 @@ export default {
       }
     },
 
-    clearModel() {
+    clearModel(clear_path) {
       this.model_loaded = false
-      window.history.pushState({}, null, window.location.origin)
+      if (clear_path) {
+        this.path = ""
+      }
+      window.history.pushState({}, null, window.location.origin + "/")
     },
 
     // Open the file containing the names of the models and extract them into a list
