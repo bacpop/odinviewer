@@ -1,8 +1,6 @@
 api_path = "http://localhost:3000/sbml"
-# Can be used with https://only-backend-v3.onrender.com/sbml
-# but it will take longer
-path_file_names = "../public/models/file_names.txt"
-output_folder = "../public/models"
+path_file_names = "../../public/models/file_names.txt"
+output_folder = "../../public/models"
 
 import requests
 import json
@@ -23,7 +21,6 @@ sbml_files = open(path_file_names, "r").read().split("\n")
 for sbml_file in sbml_files:
     if sbml_file == "":
         continue
-    print(f"Processing {sbml_file}")
     
     sbml = import_from_Biomodels(sbml_file)
 
@@ -39,3 +36,5 @@ for sbml_file in sbml_files:
     except Exception as e:
         print(f"Error: {e}")
         continue
+
+print("All files have been converted into JSON")

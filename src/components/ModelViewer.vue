@@ -6,27 +6,15 @@
             <input type="checkbox" id="graph" v-model="graph"/>
             <label for="single" id="graph_text">Show a graph of the model</label>
             <div v-if="graph">
-            <Popper>
-                <button id="legend_button">Legend</button>
-                <template #content>
-                <img src="../assets/SBML_stylesheet.svg" alt="Legend" id="legend">
-                </template>
-            </Popper>
+                <Popper>
+                    <button id="legend_button">Legend</button>
+                    <template #content>
+                    <img src="../assets/SBML_stylesheet.svg" alt="Legend" id="legend">
+                    </template>
+                </Popper>
+            </div>
         </div>
-        </div>
-    
-        <div id="time_slider" v-if="!graph">
-            <label for="time">Time: {{ time }}</label>
-            <VueSlider 
-                v-model="time"
-                :lazy="true" 
-                :min="5"
-                :max="1000"
-                :interval="1"
-                >
-            </VueSlider>
-        </div>
-    
+
         <div v-if="!graph" id="initial_parameters">
             <Popper>
                 <button>Choose initial parameters</button>
@@ -44,7 +32,19 @@
                 </template>
             </Popper>
         </div>
-
+    
+        <div id="time_slider" v-if="!graph">
+            <label for="time">Time: {{ time }}</label>
+            <VueSlider 
+                v-model="time"
+                :lazy="true" 
+                :min="5"
+                :max="1000"
+                :interval="1"
+                >
+            </VueSlider>
+        </div>
+    
         <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
         <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
         <GraphViewer v-else :model_reference="path"/>
@@ -173,43 +173,44 @@ function range(start, end, len){
 
 <style>
 :root {
-  --popper-theme-background-color: lightgray;
-  --popper-theme-background-color-hover: lightgray;
-  --popper-theme-text-color: black;
-  --popper-theme-border-width: 3px;
-  --popper-theme-border-style: solid;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 5px;
+    --popper-theme-background-color: lightgray;
+    --popper-theme-background-color-hover: lightgray;
+    --popper-theme-text-color: black;
+    --popper-theme-border-width: 3px;
+    --popper-theme-border-style: solid;
+    --popper-theme-border-radius: 6px;
+    --popper-theme-padding: 5px;
 }
 
 .keys {
-  display: inline-block;
-  width: 150px;
-  padding-bottom: 5px;
+    display: inline-block;
+    width: 150px;
+    padding-bottom: 5px;
 }
 
 .values {
-  display: inline-block;
-  width: 150px;
+    display: inline-block;
+    width: 150px;
 }
 
 #time_slider {
-  padding: 10px 20px;
+    padding: 10px 20px;
 }
 
 #checkboxes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
 }
 
 #checkboxes label {
-  margin-right: 10px;
-  margin-left: 3px
+    margin-right: 10px;
+    margin-left: 3px
 }
 
 #initial_parameters {
-  margin: 0px 50px;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 #legend {

@@ -1,5 +1,7 @@
 # odinviewer
 
+OdinViewer is a tool designed to visualise models published on EBI's Biomodels website where researchers can upload their models and associated papers. You can visualise these models through time or see an automatically generated graph for each model.
+
 ## Running this tool locally
 
 You can run this website locally with the following commands:
@@ -8,6 +10,8 @@ You can run this website locally with the following commands:
 npm install & npm run dev
 npm install & npm run build & npm run preview
 ```
+
+Once you've done this just copy the url you shell returns (it should look like this: http://localhost:5173/) and paste it in your browser.
 
 ## Adding models to the website
 
@@ -45,10 +49,10 @@ output_file <- paste("../",id, ".js", sep = "")
 writeLines(code, con = output_file)
 ```
 
-The JavaScript file should deposited into the public/models folder.
+The JavaScript file should deposited into the **public/models** folder.
 You should also add the name of the model you just added to `file_names.txt` in the same folder.
 
 ### Turning SBML files to JSON for the graph construction
 
 For this part to work, all models should appear in the `file_names.txt` file.
-You can do the conversion by reading the README file in the TurningSBMLfilesToJSON folder.
+You can do the conversion by reading the README file in the **TurningSBMLfilesToJSON** folder.
