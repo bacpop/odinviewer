@@ -99,7 +99,7 @@ export default {
             d3.selectAll(".uniqueChart").each(function(d){
                 var svg = d3.select(this)
                 svg.append("g")
-                    .call(d3.axisLeft(y_scales[d[0]]).ticks(5).tickFormat(d3.format(".2s")))
+                    .call(d3.axisLeft(y_scales[d[0]]).ticks(5).tickFormat(d3.format(".2e")))
                     .attr("transform", `translate(${margin.left}, ${margin.top})`)
             })
 

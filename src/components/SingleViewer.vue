@@ -136,7 +136,7 @@ export default {
 
             // Add the y-axis
             svg_container.append("g")
-                         .call(d3.axisLeft(y_scale).ticks(10).tickFormat(d3.format(".2s")))
+                         .call(d3.axisLeft(y_scale).ticks(10).tickFormat(d3.format(".2e")))
 
             const colors = d3.scaleOrdinal(d3.schemeCategory10).domain([...Array(this.results_names.length).keys()])
 
