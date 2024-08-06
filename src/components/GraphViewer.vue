@@ -8,7 +8,10 @@
           <input class="values_layout" type="number" :value="value[1]" @change="event => this.layoutParameters[value[0]] = +event.target.value"/>
         </div>
         <div class="layout_button">
-          <button @click="reload">Reload graph with new layout</button>
+          <button @click="reload">Reload with new layout</button>
+        </div>
+        <div class="parameters_button">
+          <button @click="Object.assign(this.layoutParameters, this.initialLayoutParameters); reload()">Reset layout</button>
         </div>
       </template>
     </Popper>
@@ -18,7 +21,7 @@
     <h2>The JSON file for this model doesn't exist</h2>
   </div>
   <div id="graphHolder"></div>
-  <button v-if="cy!=null" @click="downloadImage">Download model as an image</button>
+  <button v-if="cy!=null" @click="downloadImage">Download graph as an image</button>
   
 </template>
 
@@ -48,6 +51,7 @@ export default {
       cy: null,
       layout: {},
       layoutParameters: {},
+      initialLayoutParameters: {},
     };
   },
 
@@ -82,6 +86,8 @@ export default {
         "Tiling Padding Vert.": 10,
         "Tiling Padding Hor.": 10,
       }
+
+      Object.assign(this.initialLayoutParameters, this.layoutParameters)
 
       this.layout = {
         name: 'fcose',
