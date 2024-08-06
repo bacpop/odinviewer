@@ -3,14 +3,14 @@
         <div id="ymax_slider">
             <p>Maximum y-value</p>
             <VueSlider 
+                id="slider"
                 v-model="ymax" 
                 :min="70"
                 :max="100"
                 :interval="0.1"
                 :tooltip="'none'"
                 :direction="'btt'"
-                :height="300"
-                style="margin-top: 10px;"
+                style="margin-top: 10px; height: 100%;"
             >
             </VueSlider>
         </div>
@@ -105,7 +105,6 @@ export default {
                         - document.getElementById("time_slider").offsetHeight
                         - 40 - margin.top - margin.bottom
 
-
             const svg = d3.select("#SinglePlotContainer")
             svg.selectAll("*").remove()
             var svg_container = svg.attr("width", width + margin.left + margin.right)
@@ -179,6 +178,10 @@ export default {
                     .text(function(d){ return d[0]})
                     .attr("text-anchor", "left")
                     .style("dominant-baseline", "middle")
+
+            let height_plot = document.getElementById("SinglePlotContainer").height.baseVal.value
+            d3.select("#ymax_slider")
+                .style("height", `${height_plot - margin.bottom}px`);
         }
     }
 }
