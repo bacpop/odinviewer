@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "concurrently \"nodemon main.js\" \"python ../turnSBMLintoJSON.py\" && exit"
+    "start": "concurrently \"node main.js\" \"python ../turnSBMLintoJSON.py\""
   },
   "keywords": [],
   "author": "",

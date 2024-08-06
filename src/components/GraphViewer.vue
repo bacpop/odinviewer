@@ -26,6 +26,7 @@ export default {
       modelLoaded: false,
       noModelFound: false,
       cy: null,
+      layout: {},
       layoutParameters: {},
     };
   },
@@ -47,7 +48,8 @@ export default {
         this.noModelFound = true;
       });
 
-      this.layoutParameters = {
+      this.layout = {
+        name: 'fcose',
         padding: 10,
         nodeRepulsion: node => 4500,
         idealEdgeLength: edge => 50,
@@ -60,6 +62,21 @@ export default {
         gravityRangeCompound: 1.5,
         tilingPaddingVertical: 10,
         tilingPaddingHorizontal: 10,
+      }
+
+      this.layoutParameters = {
+        "Padding": 10,
+        "Node Repulsion": 4500,
+        "Ideal Edge Length": 50,
+        "Edge Elasticity": 0.45,
+        "Nesting Factor": 0.1,
+        "Number of Iter.": 2500,
+        "Gravity": 0.25,
+        "Gravity Range": 3.8, 
+        "Gravity Compound": 1.0,
+        "Gravity Range Comp.": 1.5,
+        "Tiling Padding Vert.": 10,
+        "Tiling Padding Hor.": 10,
       }
   },
 
