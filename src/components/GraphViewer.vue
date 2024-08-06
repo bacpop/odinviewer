@@ -4,6 +4,7 @@
     <h2>The JSON file for this model doesn't exist</h2>
   </div>
   <div id="graphHolder"></div>
+  <button @click="downloadImage">Download model as an image</button>
 </template>
 
 <script>
@@ -24,6 +25,7 @@ export default {
     return {
       modelLoaded: false,
       noModelFound: false,
+      cy: null,
     };
   },
 
@@ -50,9 +52,8 @@ export default {
     render(elements) {
 
       let stylesheet = adjustStylesheet()
-      console.log(elements)
 
-      cytoscape({
+      var cy = cytoscape({
         container: document.getElementById('graphHolder'),
         elements: elements,
         style: stylesheet,
@@ -60,6 +61,15 @@ export default {
           name: 'fcose', // Or other layout options
         }
       });
+      this.cy = cy;
+    },
+
+    downloadImage() {
+      let png = this.cy.jpg();
+      let a = document.createElement('a');
+      a.href = png;
+      a.download = 'graph.jpg';
+      a.click();
     }
 
   }
