@@ -24,8 +24,6 @@ To get the JavaScript file of the model, you should use [SBMLtoOdin](https://git
 ```R
 # install.packages("odin")
 library(odin)
-# install.packages("odin.js")
-library(odin.js)
 # install.packages("devtools")
 library(devtools)
 library(stringr)
@@ -43,7 +41,7 @@ code[1] <- paste("export",code[1])
 splited_code <- str_split_1(code[1]," ")
 splited_code[3] <- "model"
 code[1] <- paste(splited_code, collapse = " ")
-output_file <- paste("./models/",id, ".js", sep = "")
+output_file <- paste("../",id, ".js", sep = "")
 writeLines(code, con = output_file)
 ```
 

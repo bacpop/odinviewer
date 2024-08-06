@@ -26,6 +26,7 @@ export default {
       modelLoaded: false,
       noModelFound: false,
       cy: null,
+      layoutParameters: {},
     };
   },
 
@@ -45,6 +46,21 @@ export default {
       .catch( error => {
         this.noModelFound = true;
       });
+
+      this.layoutParameters = {
+        padding: 10,
+        nodeRepulsion: node => 4500,
+        idealEdgeLength: edge => 50,
+        edgeElasticity: edge => 0.45,
+        nestingFactor: 0.1,
+        numIter: 2500,
+        gravity: 0.25,
+        gravityRange: 3.8, 
+        gravityCompound: 1.0,
+        gravityRangeCompound: 1.5,
+        tilingPaddingVertical: 10,
+        tilingPaddingHorizontal: 10,
+      }
   },
 
   methods: {
@@ -62,6 +78,10 @@ export default {
         }
       });
       this.cy = cy;
+    },
+
+    updateLayout() {
+      this.cy.layout({ name: 'fcose' }).run();
     },
 
     downloadImage() {
