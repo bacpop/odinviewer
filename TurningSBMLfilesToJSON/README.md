@@ -14,4 +14,4 @@ On shell command, you can run locally the API to convert SBML files to graph usi
 npm install & npm start
 ```
 
-By doing this, the server will start and the python code that does the conversion runs. When the conversion is done, this message will appear in your shell: `All files have been converted into JSON`. When this message appears, you can press **CTRL + C** to exit.
+By doing this, the server will start and a python script will run to make the conversion. When the conversion is done, this message will appear in your shell: `All files have been converted into JSON`. When this message appears, you can press **CTRL + C** to exit.
