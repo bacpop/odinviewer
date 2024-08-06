@@ -95,11 +95,21 @@ export default {
                     .range([height, 0])
             }
 
+            const customFormat = (value) => {
+                // Logic for Exponential Notation
+                if (Math.abs(value) >= 1e4 || Math.abs(value) <= 1e-5) {
+                    return d3.format(".2e")(value); // Two significant digits with exponent
+                }
+
+                // Logic for Fixed Notation
+                return value; // Two significant digits
+            };
+
             // Giving a different y-axis to each chart
             d3.selectAll(".uniqueChart").each(function(d){
                 var svg = d3.select(this)
                 svg.append("g")
-                    .call(d3.axisLeft(y_scales[d[0]]).ticks(5).tickFormat(d3.format(".2e")))
+                    .call(d3.axisLeft(y_scales[d[0]]).ticks(5).tickFormat(customFormat))
                     .attr("transform", `translate(${margin.left}, ${margin.top})`)
             })
 

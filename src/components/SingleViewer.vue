@@ -134,9 +134,20 @@ export default {
                     .attr("font-size", "12")
                     .text("Time"))
 
+            const customFormat = (value) => {
+                // Logic for Exponential Notation
+                if (Math.abs(value) >= 1e4 || Math.abs(value) <= 1e-5) {
+                    return d3.format(".2e")(value); // Two significant digits with exponent
+                }
+
+                // Logic for Fixed Notation
+                return value; // Two significant digits
+            };
+
+            console.log(customFormat(0.01))
             // Add the y-axis
             svg_container.append("g")
-                         .call(d3.axisLeft(y_scale).ticks(10).tickFormat(d3.format(".2e")))
+                         .call(d3.axisLeft(y_scale).ticks(10).tickFormat(customFormat))
 
             const colors = d3.scaleOrdinal(d3.schemeCategory10).domain([...Array(this.results_names.length).keys()])
 
