@@ -1,7 +1,7 @@
 <template>
   <div v-if="cy!=null" id="initial_layout">
     <Popper>
-      <button>Choose layout</button>
+      <button id="choose_layout">Choose layout</button>
       <template #content>
         <div v-for="value in Object.entries(this.layoutParameters)" :key="value[1]">
           <label class="keys_layout">{{ value[0] }}</label>
@@ -21,7 +21,7 @@
     <h2>The JSON file for this model doesn't exist</h2>
   </div>
   <div id="graphHolder"></div>
-  <button v-if="cy!=null" @click="downloadImage">Download graph as an image</button>
+  <button id="downloadGraph" v-if="cy!=null" @click="downloadImage">Download graph as an image</button>
   
 </template>
 
@@ -156,10 +156,25 @@ export default {
 </script>
 
 <style>
+:root {
+    --popper-theme-background-color: lightgray;
+    --popper-theme-background-color-hover: lightgray;
+    --popper-theme-text-color: black;
+    --popper-theme-border-width: 3px;
+    --popper-theme-border-style: solid;
+    --popper-theme-border-radius: 6px;
+    --popper-theme-padding: 5px;
+}
+
+#choose_layout {
+    margin: 10px 0;
+}
+
 #graphHolder {
   width: calc(100% - 40px);
   height: 400px;
-  margin: 40
+  margin: 40;
+  border: 1px solid black;
 }
 
 .keys_layout {
@@ -174,7 +189,10 @@ export default {
 }
 
 #initial_layout {
-    margin-left: 5px;
     margin-top: 10px;
+}
+
+#downloadGraph {
+    margin: 10px 0;
 }
 </style>
