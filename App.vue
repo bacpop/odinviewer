@@ -1,12 +1,15 @@
 <template>
   <div id="appContainer">
-    <h1 id="title">Biomodels Viewer</h1>
+    <div id="Header">
+      <h1 id="title">Biomodels Viewer</h1>
+      <img src="./src/assets/favicon.png" alt="Logo" id="logo">
+    </div>
 
     <div id="chooseModel">
       <div id="model_input">
         <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel(false)" @keydown.enter="loadModel" @keydown.delete="clearModel(false)" >
-        <button v-if="!model_loaded" @click="loadModel">Load model</button>
-        <button v-if="model_loaded" @click="clearModel(true)">Clear model</button>
+        <button v-if="!model_loaded" @click="loadModel" id="loadModel">Load model</button>
+        <button v-if="model_loaded" @click="clearModel(true)" id="clearModel">Clear model</button>
         <div id="exampleModels">
           <text style="font-size: 10pt;">Example models:</text>
           <button class="exampleModel" @click="path = 'BIOMD0000000982'; loadModel()">BIOMD0000000982</button>
@@ -128,6 +131,20 @@ export default {
   box-sizing: border-box;
 }
 
+#Header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  height: 100px; 
+  width: fit-content;
+}
+
 #title {
   text-align: center;
   font-size: 50px;
@@ -137,6 +154,26 @@ export default {
 h1 {
   text-align: center;
   font-size: 50px;
+}
+
+#loadModel {
+  background-color: lightblue;
+  border-width: 1px;
+  height: 20.86px;
+}
+
+#loadModel:hover {
+  background-color: lightcyan;
+}
+
+#clearModel {
+  background-color: lightcoral;
+  border-width: 1px;
+  height: 20.86px;
+}
+
+#clearModel:hover {
+  background-color: lightpink;
 }
 
 .exampleModel {
