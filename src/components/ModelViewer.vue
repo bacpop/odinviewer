@@ -2,9 +2,9 @@
     <div v-if="model!=null">
         <div id="checkboxes">
             <input v-if="!graph" type="checkbox" id="multiple" v-model="multiple"/>
-            <label v-if="!graph" for="multiple">Show each chart in its plot</label>
+            <label v-if="!graph" for="multiple">Plot each variable individually</label>
             <input type="checkbox" id="graph" v-model="graph"/>
-            <label for="single" id="graph_text">Show a graph of the model</label>
+            <label for="graph" id="graph_text">Show a graph of the model</label>
             <div v-if="graph">
                 <Popper>
                     <button id="legend_button">Legend</button>

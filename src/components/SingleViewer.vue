@@ -144,7 +144,6 @@ export default {
                 return value; // Two significant digits
             };
 
-            console.log(customFormat(0.01))
             // Add the y-axis
             svg_container.append("g")
                          .call(d3.axisLeft(y_scale).ticks(Math.ceil(height/50)).tickFormat(customFormat))

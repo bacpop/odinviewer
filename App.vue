@@ -1,11 +1,18 @@
 <template>
   <div id="appContainer">
-    <h1 id="title">SBMLtoOdin Viewer</h1>
+    <h1 id="title">Biomodels Viewer</h1>
 
     <div id="chooseModel">
-      <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel(false)" @keydown.enter="loadModel" @keydown.delete="clearModel(false)" >
-      <button v-if="!model_loaded" @click="loadModel">Load model</button>
-      <button v-if="model_loaded" @click="clearModel(true)">Clear model</button>
+      <div id="model_input">
+        <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel(false)" @keydown.enter="loadModel" @keydown.delete="clearModel(false)" >
+        <button v-if="!model_loaded" @click="loadModel">Load model</button>
+        <button v-if="model_loaded" @click="clearModel(true)">Clear model</button>
+        <div id="exampleModels">
+          <text style="font-size: 10pt;">Example models:</text>
+          <button class="exampleModel" @click="path = 'BIOMD0000000982'; loadModel()">BIOMD0000000982</button>
+          <button class="exampleModel" @click="path = 'BIOMD0000000002'; loadModel()">BIOMD0000000002</button>
+        </div>
+      </div>
         <!-- Load the model only if its ID is in the public folder -->
       <div v-if="model_loaded && file_names.includes(path)">
         <h2>Model: {{ path }}</h2>
@@ -130,6 +137,17 @@ export default {
 h1 {
   text-align: center;
   font-size: 50px;
+}
+
+.exampleModel {
+  margin: 0 2px;
+  background-color: #f5f5f5;
+  border: 0;
+  font-size: 8pt;
+}
+
+.exampleModel:hover {
+  background-color: #e5e5e5;
 }
 
 #chooseModel {
