@@ -1,4 +1,11 @@
 <template>
+    <div id="popup">
+        <div class="popup-content">
+            <p id="popup_forbidden"> Forbidden </p>
+            <p id="popup_text"> The log scale cannot be used with negative values.</p>
+            <button id="popup_button" onclick="document.getElementById('popup').style.display = 'none'">X</button>
+        </div>
+    </div>
     <div id="SingleViewerContainer">
         <div id="ymax_slider">
             <p>Maximum y-value</p>
@@ -120,9 +127,25 @@ export default {
 
             let y_scale;
             if (this.log_scale) {
-                y_scale = d3.scaleLog()
-                    .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
-                    .range([height, 0])
+                if (this.min_y < 0) {
+                    console.log("Negative values in log scale")
+                    document.getElementById("popup").style.display = "block"
+                    y_scale = d3.scaleLinear()
+                        .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
+                        .range([height, 0])
+                    document.getElementById("log_scale").checked = false
+                }
+                else if (this.min_y < 1e-6 && this.min_y > 0) {
+                    console.log("Values close to 0 in log scale")
+                    y_scale = d3.scaleLog()
+                        .domain([this.min_y - Math.abs(0.1 * this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
+                        .range([height, 0])
+                }
+                else {
+                    y_scale = d3.scaleLog()
+                        .domain([Math.max(this.min_y - Math.abs(0.1*this.min_y), 1e-100), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
+                        .range([height, 0])
+                }
             } else {
                 y_scale = d3.scaleLinear()
                     .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
@@ -144,16 +167,21 @@ export default {
             const customFormat = (value) => {
                 // Logic for Exponential Notation
                 if (Math.abs(value) >= 1e4 || Math.abs(value) <= 1e-5) {
-                    return d3.format(".2e")(value); // Two significant digits with exponent
+                    return d3.format(".2e")(value);
                 }
 
                 // Logic for Fixed Notation
-                return value; // Two significant digits
+                return value;
             };
 
             // Add the y-axis
-            svg_container.append("g")
-                         .call(d3.axisLeft(y_scale).ticks(Math.ceil(height/65)).tickFormat(customFormat))
+            if (this.log_scale) {
+                svg_container.append("g")
+                    .call(d3.axisLeft(y_scale).ticks(Math.ceil(height/80)).tickFormat(customFormat))
+            } else {
+                svg_container.append("g")
+                    .call(d3.axisLeft(y_scale).ticks(Math.ceil(height/50)).tickFormat(customFormat))
+            }
 
             const colors = d3.scaleOrdinal(d3.schemeCategory10).domain([...Array(this.results_names.length).keys()])
 
@@ -167,7 +195,7 @@ export default {
                     .attr("d", function(d) {
                     return d3.line()
                         .x(function(d) { return x_scale(d.times); })
-                        .y(function(d) { return y_scale(+d.y); })(d[1]);
+                        .y(function(d) { return y_scale(d.y); })(d[1]);
             })
 
             let width_legend = 0
@@ -205,6 +233,40 @@ export default {
 </script>
 
 <style>
+#popup {
+    display: none;
+    position: fixed;
+    left: calc(50% - 150px);
+    top: 20px;
+    width: 300px;
+    height: 100px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+#popup_forbidden {
+    position: absolute;
+    top: 10px;
+    color: red;
+    padding-left: 5px;
+}
+
+#popup_text {
+    position: absolute;
+    top: 40px;
+    padding-left: 5px;
+}
+
+#popup_button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 16px;
+}
+
 #SingleViewerContainer {
     margin-top: 20px;
     display: flex;

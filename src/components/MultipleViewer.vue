@@ -98,11 +98,11 @@ export default {
             const customFormat = (value) => {
                 // Logic for Exponential Notation
                 if (Math.abs(value) >= 1e4 || Math.abs(value) <= 1e-5) {
-                    return d3.format(".2e")(value); // Two significant digits with exponent
+                    return d3.format(".2e")(value);
                 }
 
                 // Logic for Fixed Notation
-                return value; // Two significant digits
+                return value;
             };
 
             // Giving a different y-axis to each chart

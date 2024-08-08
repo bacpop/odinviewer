@@ -1,7 +1,7 @@
 <template>
   <div id="appContainer">
     <div id="Header">
-      <h1 id="title">Biomodels Viewer</h1>
+      <h1 id="title">Menelmacar</h1>
       <img src="./src/assets/favicon.png" alt="Logo" id="logo">
     </div>
 
@@ -13,7 +13,7 @@
         <div id="exampleModels">
           <text>Example models:</text>
           <button class="exampleModel" @click="path = 'BIOMD0000000982'; loadModel()">BIOMD0000000982</button>
-          <button class="exampleModel" @click="path = 'BIOMD0000000002'; loadModel()">BIOMD0000000002</button>
+          <button class="exampleModel" @click="path = 'BIOMD0000000012'; loadModel()">BIOMD0000000012</button>
         </div>
       </div>
         <!-- Load the model only if its ID is in the public folder -->
@@ -166,6 +166,7 @@ h1 {
 
 #loadModel:hover {
   background-color: lightcyan;
+  cursor: pointer;
 }
 
 #clearModel {
@@ -176,6 +177,7 @@ h1 {
 
 #clearModel:hover {
   background-color: lightpink;
+  cursor: pointer;
 }
 
 .exampleModel {
@@ -187,6 +189,7 @@ h1 {
 
 .exampleModel:hover {
   background-color: #e5e5e5;
+  cursor: pointer;
 }
 
 #chooseModel {

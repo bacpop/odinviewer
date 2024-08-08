@@ -204,6 +204,7 @@ function range(start, end, len){
      display: flex;
      flex-direction: row;
      align-items: center;
+     padding-top: 5px;
 }
 
 #checkboxes label {
