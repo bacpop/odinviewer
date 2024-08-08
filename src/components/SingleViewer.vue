@@ -26,7 +26,7 @@ import { ref, watch } from 'vue'
 
 export default {
     name: 'SingleViewer',
-    props: ['times', 'results_names', 'results_y'],
+    props: ['times', 'results_names', 'results_y', 'log_scale'],
 
     components: {
         VueSlider
@@ -118,9 +118,16 @@ export default {
                 .domain([0, this.times[this.times.length-1]])
                 .range([0, width])
 
-            const y_scale = d3.scaleLinear()
-                .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
-                .range([height, 0])
+            let y_scale;
+            if (this.log_scale) {
+                y_scale = d3.scaleLog()
+                    .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
+                    .range([height, 0])
+            } else {
+                y_scale = d3.scaleLinear()
+                    .domain([this.min_y - Math.abs(0.1*this.min_y), this.min_y + Math.exp(this.ymax)/Math.exp(100)*this.max_y*1.1])
+                    .range([height, 0])
+            }
 
             // Add the x-axis
             svg_container.append("g")
@@ -146,7 +153,7 @@ export default {
 
             // Add the y-axis
             svg_container.append("g")
-                         .call(d3.axisLeft(y_scale).ticks(Math.ceil(height/50)).tickFormat(customFormat))
+                         .call(d3.axisLeft(y_scale).ticks(Math.ceil(height/65)).tickFormat(customFormat))
 
             const colors = d3.scaleOrdinal(d3.schemeCategory10).domain([...Array(this.results_names.length).keys()])
 

@@ -3,6 +3,8 @@
         <div id="checkboxes">
             <input v-if="!graph" type="checkbox" id="multiple" v-model="multiple"/>
             <label v-if="!graph" for="multiple">Plot each variable individually</label>
+            <input v-if="!multiple && !graph" type="checkbox" id="log_scale" v-model="log_scale" @change="update_single+=1"/>
+            <label v-if="!multiple && !graph" for="log_scale">Log scale for the y-axis</label>
             <input type="checkbox" id="graph" v-model="graph"/>
             <label for="graph" id="graph_text">Show a graph of the model</label>
             <div v-if="graph">
@@ -45,7 +47,7 @@
             </VueSlider>
         </div>
     
-        <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_single"/>
+        <SingleViewer v-if="!multiple && !graph" :times="times" :results_names="results_names" :results_y="results_y" :log_scale="log_scale" :key="update_single"/>
         <MultipleViewer v-else-if="!graph" :times="times" :results_names="results_names" :results_y="results_y" :key="update_multiple"/>
         <GraphViewer v-else :model_reference="path"/>
     </div>
@@ -79,6 +81,7 @@ export default {
             len: 1000,
             multiple: ref(false),
             graph: ref(false),
+            log_scale: ref(false),
             mod: null,
             times: null,
             results_names: null,

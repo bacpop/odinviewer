@@ -11,14 +11,14 @@
         <button v-if="!model_loaded" @click="loadModel" id="loadModel">Load model</button>
         <button v-if="model_loaded" @click="clearModel(true)" id="clearModel">Clear model</button>
         <div id="exampleModels">
-          <text style="font-size: 10pt;">Example models:</text>
+          <text>Example models:</text>
           <button class="exampleModel" @click="path = 'BIOMD0000000982'; loadModel()">BIOMD0000000982</button>
           <button class="exampleModel" @click="path = 'BIOMD0000000002'; loadModel()">BIOMD0000000002</button>
         </div>
       </div>
         <!-- Load the model only if its ID is in the public folder -->
-      <div v-if="model_loaded && file_names.includes(path)">
-        <h2>Model: {{ path }}</h2>
+      <div v-if="model_loaded && file_names.includes(path)" >
+        <h2 style="font-size: 12pt;">Model: {{ path }}</h2>
       </div>
       <div v-else-if="no_model">
         <h2>No model is loaded</h2>
@@ -129,6 +129,8 @@ export default {
   flex-direction: column;
   height: 90vh;
   box-sizing: border-box;
+  min-height: 500px;
+  min-width: 500px;
 }
 
 #Header {
