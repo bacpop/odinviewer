@@ -2,7 +2,7 @@
   <div id="appContainer">
     <div id="Header">
       <h1 id="title">Menelmacar</h1>
-      <img src="./src/assets/favicon.png" alt="Logo" id="logo">
+      <img src="./src/assets/logo.png" alt="Logo" id="logo">
     </div>
 
     <div id="chooseModel">

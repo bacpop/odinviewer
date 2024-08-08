@@ -1,6 +1,8 @@
 # MENELMACAR
 
-Making Execution of (Nearly) Every Life-science Model ACcessible to All Researchers
+To be pronounced mene'lmakar.
+
+Making Execution of (Nearly) Every Life-science Model ACcessible to All Researchers.
 
 OdinViewer is a tool designed to visualise models published on EBI's Biomodels website where researchers can upload their models and associated papers. You can visualise these models through time or see an automatically generated graph for each model.
 
