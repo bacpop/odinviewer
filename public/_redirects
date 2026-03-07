@@ -1,2 +1,3 @@
-/index.html /index.html 200
-/* /index.html 200
+# works for netlify, not for cloudflare pages (see wrangler.toml)
+# /index.html /index.html 200
+# /* /index.html 200
