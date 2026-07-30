@@ -64,7 +64,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
       <AccordionItem value="item-1">
         <AccordionTrigger>What is this website for?</AccordionTrigger>
         <AccordionContent>
-          This website helps to visualise models from the <a href="https://www.ebi.ac.uk/biomodels/" target="_blank">EMBL-EBI's
+          This website helps to visualise models from the <a href="https://biomodels.org/" target="_blank">EMBL-EBI's
           BioModels database</a>. You can investigate the models' development over time, change parameter values and
           observe changes in the model trajectory, and see the model graph.
         </AccordionContent>
@@ -91,7 +91,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
           organism?
         </AccordionTrigger>
         <AccordionContent>
-          For this, it is easiest to go to the <a href="https://www.ebi.ac.uk/biomodels/" target="_blank">BioModels
+          For this, it is easiest to go to the <a href="https://biomodels.org/" target="_blank">BioModels
           database</a>, search for models of interest, and then come back to this website for visualisation.
         </AccordionContent>
       </AccordionItem>

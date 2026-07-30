@@ -15,7 +15,7 @@
     <p> <b> Development of Menelmacar website: </b> Antoine Andréoletti, </p>
     <p> <b> Web design: </b> Andrea Epifani, Zeqing Lu (Gomoku Studio) </p>
     <a target="_blank" class="router-link-active router-link-exact-active flex items-center gap-2 text-light-grey opacity-80 hover:opacity-100"
-    :href="`https://www.ebi.ac.uk/biomodels/`">
+    :href="`https://biomodels.org/`">
     Models are sourced from EMBL-EBI's
       <img src="/assets/BioModels_Database_logo_2014.png" alt="BioModels" class="h-12 w-12">
       <b class="text-xl font-semibold text-white">

@@ -203,7 +203,7 @@ onMounted(async () => {
           </h1>
 
           <a class="font-normal text-light-grey flex flex-row items-center gap-1 hover:underline"
-             :href="`https://www.ebi.ac.uk/biomodels/${modelId}`"
+             :href="`https://biomodels.org/${modelId}`"
              target="_blank">
             {{ modelId }}
             <ExternalLink size="16" />

@@ -1,12 +1,12 @@
 import type { ModelDetails } from '@/utils/types.ts'
 
 export const getModelData = async (modelId: string): Promise<ModelDetails> => {
-  const response = await fetch(`https://www.ebi.ac.uk/biomodels/${modelId}?format=json`)
+  const response = await fetch(`https://biomodels.org/${modelId}?format=json`)
   return await response.json()
 }
 
 export const searchModels = async (query: string): Promise<ModelSearchResult> => {
-  const response = await fetch(`https://www.ebi.ac.uk/biomodels/search?query=${query}&format=json`)
+  const response = await fetch(`https://biomodels.org/search?query=${query}&format=json`)
   return await response.json()
 }
 
