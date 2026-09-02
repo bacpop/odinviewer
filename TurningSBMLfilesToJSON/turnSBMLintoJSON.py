@@ -8,12 +8,12 @@ import os
 import urllib.parse
 
 def import_from_Biomodels(id):
-    response = requests.get(f"https://biomodels.org/model/files/{id}.xml")
+    response = requests.get(f"https://www.biomodels.org/model/files/{id}.xml")
     response = response.text
     file_main = response.split("<main>")[1].split("</main>")[0]
     file_name = file_main.split("<name>")[1].split("</name>")[0]
     file_name = urllib.parse.quote_plus(file_name)
-    response2 = requests.get(f"https://biomodels.org/model/download/{id}.xml?filename={file_name}")
+    response2 = requests.get(f"https://www.biomodels.org/model/download/{id}.xml?filename={file_name}")
     return response2.text
 
 sbml_files = open(path_file_names, "r").read().split("\n")
